@@ -1,12 +1,11 @@
-import { Outlet } from 'react-router-dom';
-import NavBar from './components/NavBar';
+import { ThemeProvider } from './context/themeProvider';
+import ScreenLayout from './components/Layout';
 
 function App() {
   return (
-    <>
-      <NavBar />
-      <Outlet />
-    </>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ScreenLayout />
+    </ThemeProvider>
   );
 }
 
