@@ -10,5 +10,9 @@ export const mainNavConfig: MainNavConfig = {
       title: 'Tickets',
       to: '/tickets',
     },
+    {
+      title: 'Leet Code',
+      to: '/leetcode',
+    },
   ],
 };
