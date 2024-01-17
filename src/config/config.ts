@@ -1,6 +1,6 @@
 import { MainNavConfig } from '@/types';
 
-export const mainNavConfig: MainNavConfig = {
+export const navConfig: MainNavConfig = {
   mainNav: [
     {
       title: 'Home',
@@ -15,4 +15,9 @@ export const mainNavConfig: MainNavConfig = {
       to: '/leetcode',
     },
   ],
+};
+
+export const globalConfig = {
+  siteName: 'Lotto Checker',
+  footerContent: 'Built by MRJB',
 };

@@ -5,6 +5,7 @@ import thelott from '../assets/thelott-logo-tagline.svg';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { MobileNav } from './MobileNav';
+import { globalConfig } from '@/config/config';
 
 interface MainNavProps {
   items?: MainNavItem[];
@@ -19,7 +20,9 @@ export const MainNav = ({ items, children }: MainNavProps) => {
     <div className="flex gap-6 md:gap-10">
       <Link to="/" className="hidden items-center space-x-2 md:flex">
         <img src={thelott} alt="lotto logo" />
-        <span className="hidden font-bold sm:inline-block">Lotto Checker</span>
+        <span className="hidden font-bold sm:inline-block">
+          {globalConfig.siteName}
+        </span>
       </Link>
       {items?.length && (
         <nav className="hidden gap-6 md:flex">

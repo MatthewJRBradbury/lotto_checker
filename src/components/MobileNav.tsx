@@ -4,6 +4,7 @@ import { MainNavItem } from '@/types';
 import { cn } from '@/lib/utils';
 import thelott from '../assets/thelott-logo-tagline.svg';
 import { Dispatch, SetStateAction } from 'react';
+import { globalConfig } from '@/config/config';
 
 interface MobileNavProps {
   items: MainNavItem[];
@@ -26,7 +27,7 @@ export function MobileNav({ items, showNav, children }: MobileNavProps) {
         >
           <img src={thelott} alt="lotto logo" />
           <span className="hidden font-bold sm:inline-block">
-            Lotto Checker
+            {globalConfig.siteName}
           </span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">

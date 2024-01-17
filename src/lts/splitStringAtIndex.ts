@@ -4,7 +4,7 @@ export const splitStringAtIndex = (str: string, idx: number): string => {
   let splitStr = '';
 
   for (let i = 0; i < str.length; i++) {
-    if ((i + 1) % idx === 1) {
+    if (i > 0 && (i + 1) % idx === 1) {
       splitStr += ' ';
     }
     splitStr += `${str[i]}${idx === 1 ? ' ' : ''}`;
