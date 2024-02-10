@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { MainNavItem } from '@/types';
 import { cn } from '@/lib/utils';
 import thelott from '../assets/thelott-logo-tagline.svg';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { globalConfig } from '@/config/config';
+import { useOnScroll } from '@/hooks/useOnScroll';
 
 interface MobileNavProps {
   items: MainNavItem[];
@@ -17,16 +18,7 @@ export function MobileNav({
   showNav,
   children,
 }: Readonly<MobileNavProps>) {
-  useEffect(() => {
-    const handleScrollOrBlur = () => {
-      showNav(false);
-    };
-    document.addEventListener('scroll', handleScrollOrBlur);
-
-    return () => {
-      document.removeEventListener('scroll', handleScrollOrBlur);
-    };
-  }, [showNav]);
+  useOnScroll(() => showNav(false));
 
   return (
     <div
