@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MainNavItem } from '@/types';
 import { cn } from '@/lib/utils';
 import thelott from '../assets/thelott-logo-tagline.svg';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { globalConfig } from '@/config/config';
 
 interface MobileNavProps {
@@ -12,7 +12,22 @@ interface MobileNavProps {
   showNav: Dispatch<SetStateAction<boolean>>;
 }
 
-export function MobileNav({ items, showNav, children }: MobileNavProps) {
+export function MobileNav({
+  items,
+  showNav,
+  children,
+}: Readonly<MobileNavProps>) {
+  useEffect(() => {
+    const handleScrollOrBlur = () => {
+      showNav(false);
+    };
+    document.addEventListener('scroll', handleScrollOrBlur);
+
+    return () => {
+      document.removeEventListener('scroll', handleScrollOrBlur);
+    };
+  }, [showNav]);
+
   return (
     <div
       className={cn(
@@ -31,9 +46,9 @@ export function MobileNav({ items, showNav, children }: MobileNavProps) {
           </span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">
-          {items.map((item, index) => (
+          {items.map((item) => (
             <Link
-              key={index}
+              key={item.title}
               to={item.disabled ? '#' : item.to}
               onClick={() => showNav(false)}
               className={cn(

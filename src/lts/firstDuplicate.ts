@@ -1,4 +1,4 @@
-export function firstDuplicate(arr: number[]): number {
+export const firstDuplicate = (arr: number[]): number => {
   const set = new Set();
   const duplicates = [];
 
@@ -11,4 +11,4 @@ export function firstDuplicate(arr: number[]): number {
   }
 
   return duplicates[0];
-}
+};

@@ -18,7 +18,6 @@ export default function ScreenLayout() {
           <Outlet />
         </main>
       </div>
-      <button disabled></button>
       <SiteFooter className="border-t" />
     </div>
   );

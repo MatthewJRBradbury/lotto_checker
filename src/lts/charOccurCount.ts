@@ -1,4 +1,4 @@
-export function charOccurCount(str: string) {
+export const charOccurCount = (str: string) => {
   const charCount: Record<string, number> = {};
   for (const char of str) {
     if (charCount[char]) {
@@ -8,4 +8,4 @@ export function charOccurCount(str: string) {
     }
   }
   return charCount;
-}
+};

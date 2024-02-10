@@ -6,12 +6,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { CardProps } from '@/types';
-import { ReactNode } from 'react';
-
-type LeetCardProps = CardProps & {
-  description: ReactNode;
-};
+import { LeetCardProps } from '@/types';
 
 const LeetCard = ({ className, ...props }: LeetCardProps) => {
   return (

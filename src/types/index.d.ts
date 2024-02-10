@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card';
-import { ComponentProps } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 
 export type NavItem = {
   title: string;
@@ -14,3 +14,13 @@ export type MainNavConfig = {
 };
 
 export type CardProps = ComponentProps<typeof Card>;
+
+export type LeetCardProps = CardProps & {
+  description: ReactNode;
+};
+
+export type LeetCardContentProps = {
+  input: string | ReactNode;
+  func: typeof function;
+  funcAsString: string;
+};
