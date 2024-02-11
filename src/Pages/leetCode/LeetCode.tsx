@@ -1,6 +1,6 @@
 import { Header } from '@/components/Header';
 import { Search } from '@/components/Search';
-import LeetCard from '@/components/leetCode/LeetCard';
+import BasicCard from '@/components/BasicCard';
 import LeetCardContent from '@/components/leetCode/LeetCardContent';
 import { canFormString } from '@/lts/canFormString';
 import { charOccurCount } from '@/lts/charOccurCount';
@@ -183,7 +183,7 @@ const LeetCode = () => {
   const [filteredList, setFilteredList] = useState<any[]>(leets);
 
   const searchLeets = (input: string, list: typeof leets) => {
-    const searchResult = fuzzySearch(input, list, 'title').result;
+    const searchResult = fuzzySearch(input, list, ['title']).result;
     setFilteredList(searchResult);
   };
 
@@ -195,12 +195,13 @@ const LeetCode = () => {
           searchFunc={searchLeets}
           list={leets}
           className="sm:w-full md:w-1/3"
+          aria-label="Search leet code problems"
         />
       </div>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {filteredList.map((leet) => {
           return (
-            <LeetCard
+            <BasicCard
               key={leet.title}
               title={leet.title}
               description={leet.desc}
@@ -210,7 +211,7 @@ const LeetCode = () => {
                 func={leet.fnResult}
                 funcAsString={`const ${leet.fn.name} = ${leet.fn.toString()}`}
               />
-            </LeetCard>
+            </BasicCard>
           );
         })}
       </div>

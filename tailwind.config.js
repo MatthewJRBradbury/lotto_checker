@@ -72,6 +72,19 @@ export const theme = {
       'accordion-down': 'accordion-down 0.2s ease-out',
       'accordion-up': 'accordion-up 0.2s ease-out',
     },
+
+    // Add your custom gradient overlay utility here
+    backgroundImage: {
+      'gradient-overlay':
+        'linear-gradient(to top, rgba(2,  8,  23,  1), transparent)',
+    },
+    backdropFilter: {
+      blurry: 'blur(10px)',
+    },
+    // You can also extend the gradient color stops if needed
+    gradientColorStops: {
+      90: '90%',
+    },
   },
 };
 export const plugins = [tailwindcssAnimate];

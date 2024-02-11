@@ -18,7 +18,11 @@ export const MainNav = ({ items, children }: MainNavProps) => {
 
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link to="/" className="hidden items-center space-x-2 md:flex">
+      <Link
+        to="/"
+        aria-label="navigate home"
+        className="hidden items-center space-x-2 md:flex"
+      >
         <img src={thelott} alt="lotto logo" />
         <span className="hidden font-bold sm:inline-block">
           {globalConfig.siteName}
@@ -44,6 +48,7 @@ export const MainNav = ({ items, children }: MainNavProps) => {
         </nav>
       )}
       <button
+        aria-label="Mobile Navigation toggle"
         className="flex items-center space-x-2 md:hidden"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >

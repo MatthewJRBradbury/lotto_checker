@@ -15,8 +15,8 @@ export type MainNavConfig = {
 
 export type CardProps = ComponentProps<typeof Card>;
 
-export type LeetCardProps = CardProps & {
-  description: ReactNode;
+export type BasicCardProps = CardProps & {
+  description?: ReactNode;
 };
 
 export type LeetCardContentProps = {
@@ -24,3 +24,11 @@ export type LeetCardContentProps = {
   func: typeof function;
   funcAsString: string;
 };
+
+export type TicketCardContentProps = {
+  games: Games;
+};
+
+export type Games = { [key: number]: number[] };
+
+export type Ticket = { type: string; draw: number; games: Games };

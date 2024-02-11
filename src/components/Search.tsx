@@ -7,6 +7,7 @@ export const Search = <T extends string | object>({
   searchFunc,
   list,
   key,
+  ...rest
 }: {
   className: string;
   searchFunc: (value: string, list: T[], key?: keyof T) => void;
@@ -21,6 +22,7 @@ export const Search = <T extends string | object>({
         autoFocus
         className={'pl-8'}
         onChange={(e) => searchFunc(e.target.value, list, key)}
+        {...rest}
       />
     </div>
   );

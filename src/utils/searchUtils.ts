@@ -1,27 +1,29 @@
-export type SearchResult = {
+export type SearchResult<T> = {
   matches: boolean;
-  result: Array<string | object>;
+  result: Array<T>;
 };
 
-export const fuzzySearch = <T extends string | object>(
+export const fuzzySearch = <T>(
   input: string,
   list: T[],
-  key?: keyof T
-): SearchResult => {
+  keys?: Array<keyof T>
+): SearchResult<T> => {
   const lowerCaseInput = input.toLowerCase();
-  const results: Array<string | object> = [];
+  const results: Array<T> = [];
 
   list.forEach((item) => {
-    let valueToSearch: string;
-    if (typeof item === 'object' && key) {
-      valueToSearch = String(item[key]).toLowerCase();
-    } else if (typeof item === 'string') {
-      valueToSearch = item.toLowerCase();
+    let concatenatedValue = '';
+    if (keys) {
+      keys.forEach((key) => {
+        concatenatedValue += String(item[key]).toLowerCase() + ' ';
+      });
     } else {
-      throw new Error('Invalid item type or key.');
+      // Fallback to the original behavior if no keys are provided
+      concatenatedValue = String(item).toLowerCase();
     }
 
-    if (valueToSearch.includes(lowerCaseInput)) {
+    const isMatch = concatenatedValue.includes(lowerCaseInput);
+    if (isMatch) {
       results.push(item);
     }
   });
