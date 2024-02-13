@@ -30,23 +30,28 @@ const TicketContent = ({ games }: TicketCardContentProps) => {
           </tbody>
         </table>
       </div>
-      {gameList.length > 3 && ( // add tooltip desc "Show All Games"
-        <Button variant="ghost" size="icon" className="z-10 self-center">
+      {gameList.length > 3 && (
+        <Button
+          variant="ghost"
+          size="icon"
+          className="z-10 self-center"
+          aria-label="Expand ticket to view all games"
+        >
           {isExpanded ? (
             <ChevronUpIcon
-              className="h-10 w-10"
+              className="z-10 h-10 w-10 transform self-center transition-transform duration-200 hover:-translate-y-1"
               onClick={() => setIsExpanded(!isExpanded)}
             />
           ) : (
             <ChevronDownIcon
-              className="h-10 w-10"
+              className="z-10 h-10 w-10 transform self-center transition-transform duration-200 hover:translate-y-1"
               onClick={() => setIsExpanded(!isExpanded)}
             />
           )}
         </Button>
       )}
       {!isExpanded && gameList.length > 3 && (
-        <div className="bg-gradient-overlay backdrop-filter-blurry absolute inset-x-0 bottom-0 h-1/2"></div>
+        <div className="backdrop-filter-blurry absolute inset-x-0 bottom-0 h-1/2 rounded-b-xl bg-gradient-overlay"></div>
       )}
     </div>
   );

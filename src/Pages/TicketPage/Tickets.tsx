@@ -4,7 +4,7 @@ import BasicCard from '@/components/BasicCard';
 import TicketContent from '../../components/ticket/TicketContent';
 import { fuzzySearch } from '@/utils/searchUtils';
 import { useState } from 'react';
-import { Ticket } from '@/types';
+import { FavoriteTicket } from '@/types';
 
 // const results = [
 //   // move elsewhere
@@ -25,19 +25,28 @@ import { Ticket } from '@/types';
 // ];
 
 // TODO: Replace with API request to backend (yet to create)
-const tickets: Ticket[] = [
+const tickets: FavoriteTicket[] = [
   {
     type: 'Mon & Wed Lotto',
-    draw: 4363,
+    name: 'Bdays',
     games: {
       1: [1, 2, 3, 4, 5, 6],
       2: [15, 11, 23, 45, 32, 1],
       3: [15, 11, 23, 45, 32, 1],
+      4: [15, 11, 23, 45, 32, 1],
+      5: [15, 11, 23, 45, 32, 1],
+      6: [15, 11, 23, 45, 32, 1],
+      7: [15, 11, 23, 45, 32, 1],
+      8: [15, 11, 23, 45, 32, 1],
+      9: [15, 11, 23, 45, 32, 1],
+      10: [15, 11, 23, 45, 32, 1],
+      11: [15, 11, 23, 45, 32, 1],
+      12: [15, 11, 23, 45, 32, 1],
     },
   },
   {
     type: 'Mon & Wed Lotto',
-    draw: 4362,
+    name: 'My Personal fav',
     games: {
       1: [1, 2, 3, 4, 5, 6],
       2: [15, 11, 23, 45, 32, 1],
@@ -55,7 +64,7 @@ const tickets: Ticket[] = [
   },
   {
     type: 'Saturday Lotto',
-    draw: 5365,
+    name: 'lucky numbers!',
     games: {
       1: [1, 2, 3, 4, 5, 6],
       2: [15, 11, 23, 45, 32, 1],
@@ -64,12 +73,12 @@ const tickets: Ticket[] = [
 ];
 
 const Tickets = () => {
-  const [filteredList, setFilteredList] = useState<Ticket[]>(tickets);
+  const [filteredList, setFilteredList] = useState<FavoriteTicket[]>(tickets);
 
-  const searchTickets = (input: string, list: Ticket[]) => {
-    const searchResult = fuzzySearch<Ticket>(input, list, [
+  const searchTickets = (input: string, list: FavoriteTicket[]) => {
+    const searchResult = fuzzySearch<FavoriteTicket>(input, list, [
       'type',
-      'draw',
+      'name',
     ]).result;
     setFilteredList(searchResult);
   };
@@ -89,8 +98,9 @@ const Tickets = () => {
         {filteredList.map((ticket) => {
           return (
             <BasicCard
-              key={ticket.draw}
-              title={`${ticket.type} Draw ${ticket.draw}`}
+              key={ticket.name}
+              title={`${ticket.name}`}
+              description={ticket.type}
               className="relative"
             >
               <TicketContent games={ticket.games} />

@@ -76,12 +76,12 @@ export const theme = {
     // Add your custom gradient overlay utility here
     backgroundImage: {
       'gradient-overlay':
-        'linear-gradient(to top, rgba(2,  8,  23,  1), transparent)',
+        'linear-gradient(to top, hsl(var(--primary-foreground)) 35%, transparent)',
     },
     backdropFilter: {
       blurry: 'blur(10px)',
     },
-    // You can also extend the gradient color stops if needed
+    // can also extend the gradient color stops if needed
     gradientColorStops: {
       90: '90%',
     },

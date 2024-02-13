@@ -32,3 +32,5 @@ export type TicketCardContentProps = {
 export type Games = { [key: number]: number[] };
 
 export type Ticket = { type: string; draw: number; games: Games };
+
+export type FavoriteTicket = { type: string; name: string; games: Games };

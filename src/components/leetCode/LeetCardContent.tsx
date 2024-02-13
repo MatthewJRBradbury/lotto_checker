@@ -6,6 +6,8 @@ const LeetCardContent = ({
   func,
   funcAsString,
 }: LeetCardContentProps) => {
+  /** TODO: add expected output and actual output, also make code section
+   * have nav for multiple solutions */
   return (
     <>
       <h4>
