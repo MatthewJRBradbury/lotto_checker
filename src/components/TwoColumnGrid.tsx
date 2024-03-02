@@ -19,7 +19,7 @@ const TwoColumnGrid = <T,>({
   const secondColumnItems = items.slice(itemsPerColumn);
 
   return (
-    <div className={`flex gap-6 sm:flex-col lg:flex-row ${className}`}>
+    <div className={`flex flex-col gap-6 lg:flex-row ${className}`}>
       <div className={`flex flex-col gap-6 lg:w-1/2`}>
         {firstColumnItems.map((item) => renderItem(item))}
       </div>
