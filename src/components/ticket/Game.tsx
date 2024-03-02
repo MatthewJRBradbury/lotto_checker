@@ -12,7 +12,7 @@ const Game: React.FC<GameProps> = ({ keyValue, numbers, ...rest }) => (
         {numbers.map((number) => (
           <div
             key={number}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-600 text-gray-50"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-purple-600 text-gray-50 sm:h-12 sm:w-12"
           >
             <span>
               <b>{number}</b>

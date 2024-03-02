@@ -5,6 +5,7 @@ import TicketContent from '../../components/ticket/TicketContent';
 import { fuzzySearch } from '@/utils/searchUtils';
 import { useState } from 'react';
 import { FavoriteTicket } from '@/types';
+import TwoColumnGrid from '@/components/TwoColumnGrid';
 
 // const results = [
 //   // move elsewhere
@@ -94,20 +95,20 @@ const Tickets = () => {
           aria-label="Search 'My Tickets'"
         />
       </div>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {filteredList.map((ticket) => {
-          return (
-            <BasicCard
-              key={ticket.name}
-              title={`${ticket.name}`}
-              description={ticket.type}
-              className="relative"
-            >
-              <TicketContent games={ticket.games} />
-            </BasicCard>
-          );
-        })}
-      </div>
+      <TwoColumnGrid
+        items={filteredList}
+        renderItem={(ticket) => (
+          <BasicCard
+            key={ticket.name}
+            title={`${ticket.name}`}
+            description={ticket.type}
+            className="relative"
+          >
+            <TicketContent games={ticket.games} />
+          </BasicCard>
+        )}
+        className="flex gap-6 sm:flex-col lg:flex-row"
+      />
     </div>
   );
 };

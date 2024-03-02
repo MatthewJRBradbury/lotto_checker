@@ -180,7 +180,7 @@ const leets = [
 ];
 
 const LeetCode = () => {
-  const [filteredList, setFilteredList] = useState<any[]>(leets);
+  const [filteredList, setFilteredList] = useState<typeof leets>(leets);
 
   const searchLeets = (input: string, list: typeof leets) => {
     const searchResult = fuzzySearch(input, list, ['title']).result;

@@ -15,7 +15,9 @@ const BasicCard = ({ className, ...props }: BasicCardProps) => {
         <CardTitle className="text-xl">{props.title}</CardTitle>
         <CardDescription>{props?.description}</CardDescription>
       </CardHeader>
-      <CardContent className="grid gap-4">{props.children}</CardContent>
+      <CardContent className="grid justify-center gap-4">
+        {props.children}
+      </CardContent>
     </Card>
   );
 };
