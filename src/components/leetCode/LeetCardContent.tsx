@@ -10,15 +10,15 @@ const LeetCardContent = ({
    * have nav for multiple solutions */
   return (
     <>
-      <h4>
+      <h3>
         <b>Input:</b> ({input})
-      </h4>
-      <h4>
+      </h3>
+      <h3>
         <b>Output:</b> {func?.()}
-      </h4>
-      <h4>
+      </h3>
+      <h3>
         <b>Code:</b>
-      </h4>
+      </h3>
       <span className="overflow-auto">
         <CopyBlock
           text={funcAsString}
