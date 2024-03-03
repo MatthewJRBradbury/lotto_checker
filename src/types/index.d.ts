@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { ComponentProps, ReactNode } from 'react';
+import gameRules from '@/config/gameRules.json';
 
 export type NavItem = {
   title: string;
@@ -40,13 +41,15 @@ type ErrorInfo = {
   code: number;
 };
 
+type JsonKeys<T> = keyof T;
+
+type DrawType = JsonKeys<typeof gameRules>;
+
 type DrawResults = {
   DrawResults: DrawResult[];
   ErrorInfo: ErrorInfo | null;
   Success: boolean;
 };
-
-type Games = number[][];
 
 type DrawDataRequest = {
   CompanyId: string;
@@ -56,7 +59,7 @@ type DrawDataRequest = {
 
 type WinCheckResult = {
   Win: boolean;
-  Division: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  Division: number;
   Prize: string | undefined;
   Game: number[];
   PrimaryNumberCount: number;
@@ -77,7 +80,7 @@ type DrawResult = {
   PrizeBoost: number;
 };
 
-export type DividendResult = {
+type DividendResult = {
   Division: number;
   BlocNumberOfWinners: number;
   BlocDividend: number;
@@ -89,4 +92,18 @@ export type DividendResult = {
   PrizeBoostValue: number;
 };
 
-export type { DrawResults, DrawResult, Games, DrawDataRequest, WinCheckResult };
+type WinningCombo = {
+  division: number;
+  primaryNumberCount: number;
+  secondaryNumberCount: number;
+};
+
+export type {
+  DrawType,
+  DrawResults,
+  DrawResult,
+  DividendResult,
+  DrawDataRequest,
+  WinCheckResult,
+  WinningCombo,
+};

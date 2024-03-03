@@ -13,6 +13,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/setupTests.ts'],
     pool: 'forks',
+    exclude: ['e2e', 'node_modules', 'dist', '.idea', '.git', '.cache'],
   },
   resolve: {
     alias: {
