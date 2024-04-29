@@ -1,27 +1,23 @@
 import {
-  DrawDataRequest,
-  DrawResults,
+  DrawResult,
   Games,
   WinCheckResult,
   DividendResult,
   DrawType,
   WinningCombo,
+  DrawWinResults,
 } from '@/types';
 
 import gameRules from '@/config/gameRules.json';
-
-const requestBody: DrawDataRequest = {
-  CompanyId: 'Tattersalls',
-  MaxDrawCountPerProduct: 10,
-  OptionalProductFilter: ['MonWedLotto'],
-};
+import { formatSimpleDate } from './dateUtils';
 
 export const analyseDraw = (
   drawType: DrawType,
-  data: DrawResults,
+  data: DrawResult[],
   myGames: Games
-): void => {
-  for (const draw of data.DrawResults) {
+): DrawWinResults => {
+  const drawWins: DrawWinResults = {};
+  for (const draw of data) {
     const primaryNumbers = draw.PrimaryNumbers;
     const secondaryNumbers = draw.SecondaryNumbers;
     const dividends = draw.Dividends;
@@ -46,10 +42,17 @@ export const analyseDraw = (
         winningGames.push(result);
       }
     }
-    winningGames.length > 0
-      ? console.log(winningGames)
-      : console.log('No Wins better luck next time :(');
+    drawWins[draw.DrawNumber] = {
+      label: `${draw.DrawNumber} - ${formatSimpleDate(
+        new Date(draw.DrawDate)
+      )}`,
+      DrawDate: draw.DrawDate,
+      Wins: winningGames,
+      PrimaryNumbers: draw.PrimaryNumbers,
+      SecondaryNumbers: draw.SecondaryNumbers,
+    };
   }
+  return drawWins;
 };
 
 export const checkForWin = (

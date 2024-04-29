@@ -1,4 +1,14 @@
 {
+  "TattsLotto": {
+    "winningCombinations": [
+        {"division": 1, "primaryNumberCount": 6, "secondaryNumberCount": 0},
+        {"division": 2, "primaryNumberCount": 5, "secondaryNumberCount": 1},
+        {"division": 3, "primaryNumberCount": 5, "secondaryNumberCount": 0},
+        {"division": 4, "primaryNumberCount": 4, "secondaryNumberCount": 0},
+        {"division": 5, "primaryNumberCount": 3, "secondaryNumberCount": 1},
+        {"division": 6, "primaryNumberCount": 1, "secondaryNumberCount": 2}
+    ]
+  },
   "MonWedLotto": {
     "winningCombinations": [
         {"division": 1, "primaryNumberCount": 6, "secondaryNumberCount": 0},

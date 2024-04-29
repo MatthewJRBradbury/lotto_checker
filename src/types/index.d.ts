@@ -1,4 +1,5 @@
 import { Card } from '@/components/ui/card';
+import { Select } from '@/components/ui/select';
 import { ComponentProps, ReactNode } from 'react';
 import gameRules from '@/config/gameRules.json';
 
@@ -14,10 +15,19 @@ export type MainNavConfig = {
   mainNav: MainNavItem[];
 };
 
+export type SelectProps = ComponentProps<typeof Select>;
+
 export type CardProps = ComponentProps<typeof Card>;
 
 export type BasicCardProps = CardProps & {
   description?: ReactNode;
+  topRightComponent?: ReactNode;
+};
+
+export type BasicSelectProps = SelectProps & {
+  className?: string | undefined;
+  placeholder?: ReactNode;
+  options?: Record<string, any>[];
 };
 
 export type LeetCardContentProps = {
@@ -28,13 +38,21 @@ export type LeetCardContentProps = {
 
 export type TicketCardContentProps = {
   games: Games;
+  ticketResult?: DrawWinResult;
 };
 
-export type Games = { [key: number]: number[] };
+export type Games = { [key: string]: number[] };
 
 export type Ticket = { type: string; draw: number; games: Games };
 
-export type FavoriteTicket = { type: string; name: string; games: Games };
+export type FavoriteTicket = {
+  id: string;
+  typeDisplayName: DrawTypeDisplayName;
+  type: DrawType;
+  name: string;
+  games: Games;
+  activeDraw?: DrawWinResult; // is active for ticket page
+};
 
 type ErrorInfo = {
   message: string;
@@ -42,6 +60,13 @@ type ErrorInfo = {
 };
 
 type JsonKeys<T> = keyof T;
+
+type DrawTypeDisplayName =
+  | 'Mon & Wed Lotto'
+  | 'Saturday Lotto'
+  | 'Powerball'
+  | 'Set For Life'
+  | 'Oz Lotto';
 
 type DrawType = JsonKeys<typeof gameRules>;
 
@@ -54,8 +79,17 @@ type DrawResults = {
 type DrawDataRequest = {
   CompanyId: string;
   MaxDrawCountPerProduct: number;
-  OptionalProductFilter: string[];
+  OptionalProductFilter: DrawType[];
 };
+
+type DrawWinResult = {
+  label: string;
+  DrawDate: string;
+  Wins: WinCheckResult[];
+  PrimaryNumbers: number[];
+  SecondaryNumbers: number[];
+};
+type DrawWinResults = Record<number, DrawWinResult>;
 
 type WinCheckResult = {
   Win: boolean;
@@ -106,4 +140,6 @@ export type {
   DrawDataRequest,
   WinCheckResult,
   WinningCombo,
+  DrawWinResults,
+  DrawWinResult,
 };
