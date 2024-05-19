@@ -107,7 +107,7 @@ const Tickets = () => {
     createDrawDataRequest(filteredList)
   );
   const [ticketResults, setTicketResults] =
-    useState<Record<string, DrawWinResults>>();
+    useState<Record<string, DrawWinResultRecord | string>[]>();
   const [ticketActiveDraws, setTicketActiveDraws] =
     useState<Record<string, DrawWinResult>>();
 
@@ -136,7 +136,17 @@ const Tickets = () => {
             ticket.games
           );
         }
-        setTicketResults(result);
+        setTicketResults(
+          Object.entries(result?.[ticket.id] || {})
+            .reverse()
+            .map(([key, DrawWinResult]: [string, DrawWinResult]) => ({
+              label: DrawWinResult.label,
+              value: {
+                number: key,
+                DrawWinResult: DrawWinResult,
+              },
+            }))
+        );
       }
     }
   }, [drawData]);
@@ -172,15 +182,7 @@ const Tickets = () => {
                 key={ticket.id}
                 className="w-fit"
                 placeholder="Draw No."
-                options={Object.entries(ticketResults?.[ticket.id] || {})
-                  .reverse()
-                  .map(([key, DrawWinResult]: [string, DrawWinResult]) => ({
-                    label: DrawWinResult.label,
-                    value: {
-                      number: key,
-                      DrawWinResult: DrawWinResult,
-                    },
-                  }))}
+                options={ticketResults}
                 onValueChange={(value: DrawWinResultRecord | string) => {
                   if (value && typeof value !== 'string') {
                     setTicketActiveDraws((prev) => ({
