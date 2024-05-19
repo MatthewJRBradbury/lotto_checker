@@ -95,7 +95,7 @@ const createDrawDataRequest = (
 
   return {
     CompanyId: 'Tattersalls',
-    MaxDrawCountPerProduct: 2,
+    MaxDrawCountPerProduct: 10,
     OptionalProductFilter: [...drawTypeSet],
   };
 };
