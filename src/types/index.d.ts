@@ -27,7 +27,13 @@ export type BasicCardProps = CardProps & {
 export type BasicSelectProps = SelectProps & {
   className?: string | undefined;
   placeholder?: ReactNode;
-  options?: Record<string, any>[];
+  options?: Record<string, Option>[];
+};
+
+// Define a generic Option type
+type Option<TLabel extends string, TValue> = {
+  label: TLabel;
+  value: TValue;
 };
 
 export type LeetCardContentProps = {
@@ -90,6 +96,7 @@ type DrawWinResult = {
   SecondaryNumbers: number[];
 };
 type DrawWinResults = Record<number, DrawWinResult>;
+type DrawWinResultRecord = { number: string; DrawWinResult: DrawWinResult };
 
 type WinCheckResult = {
   Win: boolean;
@@ -141,5 +148,6 @@ export type {
   WinCheckResult,
   WinningCombo,
   DrawWinResults,
+  DrawWinResultRecord,
   DrawWinResult,
 };

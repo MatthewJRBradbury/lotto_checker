@@ -11,6 +11,7 @@ import {
   DrawWinResult,
   DrawWinResults,
   FavoriteTicket,
+  DrawWinResultRecord,
 } from '@/types';
 import TwoColumnGrid from '@/components/TwoColumnGrid';
 import { fetchDrawData } from '@/API/theLottApis';
@@ -23,20 +24,20 @@ const tickets: FavoriteTicket[] = [
     id: 't1',
     typeDisplayName: 'Mon & Wed Lotto',
     type: 'MonWedLotto',
-    name: 'Bdays',
+    name: 'MonFri',
     games: {
-      1: [1, 7, 3, 4, 5, 6],
-      2: [15, 11, 23, 45, 32, 1],
-      3: [15, 11, 23, 45, 32, 1],
-      4: [15, 11, 23, 45, 32, 1],
-      5: [15, 11, 23, 45, 32, 1],
-      6: [15, 11, 23, 45, 32, 1],
-      7: [15, 11, 23, 45, 32, 1],
-      8: [15, 11, 23, 45, 32, 1],
-      9: [15, 11, 23, 45, 32, 1],
-      10: [15, 11, 23, 45, 32, 1],
-      11: [15, 11, 23, 45, 32, 1],
-      12: [15, 11, 23, 45, 32, 1],
+      1: [3, 12, 18, 27, 33, 43],
+      2: [2, 20, 21, 24, 29, 42],
+      3: [8, 15, 16, 30, 44, 45],
+      4: [3, 6, 14, 24, 26, 33],
+      5: [7, 12, 20, 28, 42, 45],
+      6: [5, 10, 19, 33, 36, 43],
+      7: [5, 8, 11, 25, 29, 41],
+      8: [1, 11, 28, 29, 30, 38],
+      9: [4, 18, 26, 41, 42, 45],
+      10: [9, 14, 17, 25, 36, 39],
+      11: [3, 6, 32, 34, 39, 43],
+      12: [9, 21, 25, 26, 32, 34],
     },
   },
   {
@@ -102,7 +103,7 @@ const createDrawDataRequest = (
 const Tickets = () => {
   const [filteredList, setFilteredList] = useState<FavoriteTicket[]>(tickets);
   const [drawData, setDrawData] = useState<DrawResults | null>(null);
-  const [drawReq, setDrawReq] = useState<DrawDataRequest>(
+  const [drawReq] = useState<DrawDataRequest>(
     createDrawDataRequest(filteredList)
   );
   const [ticketResults, setTicketResults] =
@@ -180,18 +181,15 @@ const Tickets = () => {
                       DrawWinResult: DrawWinResult,
                     },
                   }))}
-                onValueChange={(value: DrawWinResult | string) => {
+                onValueChange={(value: DrawWinResultRecord | string) => {
                   if (value && typeof value !== 'string') {
                     setTicketActiveDraws((prev) => ({
                       ...prev,
-                      [ticket.id]: value,
+                      [ticket.id]: value?.DrawWinResult,
                     }));
                   }
                 }}
-                value={
-                  ticketActiveDraws?.[ticket.id]?.DrawWinResult?.label ||
-                  'Draw No.'
-                }
+                value={ticketActiveDraws?.[ticket.id]?.label ?? 'Draw No.'}
               />
             }
             className="relative"

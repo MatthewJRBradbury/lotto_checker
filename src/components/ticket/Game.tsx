@@ -1,10 +1,10 @@
 import { cn } from '@/lib/utils';
-import { DrawWinResults } from '@/types';
+import { DrawWinResult } from '@/types';
 
 interface GameProps {
   keyValue?: string;
   numbers: number[];
-  results: DrawWinResults | undefined;
+  results: DrawWinResult | undefined;
   className?: string;
 }
 
@@ -21,11 +21,9 @@ const Game: React.FC<GameProps> = ({ keyValue, numbers, results, ...rest }) => (
       <div className="flex items-center gap-3">
         {numbers.map((number) => {
           let color = colorOpts.regular;
-          if (results?.DrawWinResult?.PrimaryNumbers.includes(number)) {
+          if (results?.PrimaryNumbers.includes(number)) {
             color = colorOpts.primary;
-          } else if (
-            results?.DrawWinResult?.SecondaryNumbers.includes(number)
-          ) {
+          } else if (results?.SecondaryNumbers.includes(number)) {
             color = colorOpts.secondary;
           }
           return (
