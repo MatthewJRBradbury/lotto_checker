@@ -63,8 +63,8 @@ const tickets: FavoriteTicket[] = [
   {
     id: 't3',
     typeDisplayName: 'Saturday Lotto',
-    type: 'MonWedLotto',
-    name: 'lucky numbers monwed!',
+    type: 'TattsLotto',
+    name: 'lucky numbers sat!',
     games: {
       1: [1, 2, 3, 4, 5, 6],
       2: [15, 11, 23, 45, 32, 1],
@@ -107,7 +107,7 @@ const Tickets = () => {
     createDrawDataRequest(filteredList)
   );
   const [ticketResults, setTicketResults] =
-    useState<Record<string, DrawWinResultRecord | string>[]>();
+    useState<Record<string, Record<string, DrawWinResultRecord | string>[]>>();
   const [ticketActiveDraws, setTicketActiveDraws] =
     useState<Record<string, DrawWinResult>>();
 
@@ -136,17 +136,23 @@ const Tickets = () => {
             ticket.games
           );
         }
-        setTicketResults(
-          Object.entries(result?.[ticket.id] || {})
-            .reverse()
-            .map(([key, DrawWinResult]: [string, DrawWinResult]) => ({
-              label: DrawWinResult.label,
-              value: {
-                number: key,
-                DrawWinResult: DrawWinResult,
-              },
-            }))
-        );
+        const trs = Object.entries(result?.[ticket.id] || {})
+          .reverse()
+          .map(([key, DrawWinResult]: [string, DrawWinResult]) => ({
+            label: DrawWinResult.label,
+            value: {
+              number: key,
+              DrawWinResult: DrawWinResult,
+            },
+          }));
+        setTicketResults((prev) => ({
+          ...prev,
+          [ticket.id]: trs,
+        }));
+        setTicketActiveDraws((prev) => ({
+          ...prev,
+          [ticket.id]: trs?.[0]?.value?.DrawWinResult,
+        }));
       }
     }
   }, [drawData]);
@@ -182,7 +188,7 @@ const Tickets = () => {
                 key={ticket.id}
                 className="w-fit"
                 placeholder="Draw No."
-                options={ticketResults}
+                options={ticketResults?.[ticket.id]}
                 onValueChange={(value: DrawWinResultRecord | string) => {
                   if (value && typeof value !== 'string') {
                     setTicketActiveDraws((prev) => ({

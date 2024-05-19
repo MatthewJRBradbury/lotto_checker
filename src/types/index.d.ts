@@ -95,7 +95,7 @@ type DrawWinResult = {
   PrimaryNumbers: number[];
   SecondaryNumbers: number[];
 };
-type DrawWinResults = Record<number, DrawWinResult>;
+type DrawWinResults = Record<string, DrawWinResult>;
 type DrawWinResultRecord = { number: string; DrawWinResult: DrawWinResult };
 
 type WinCheckResult = {
