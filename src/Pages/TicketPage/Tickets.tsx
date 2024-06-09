@@ -22,8 +22,8 @@ import BasicSelect from '@/components/BasicSelect';
 const tickets: FavoriteTicket[] = [
   {
     id: 't1',
-    typeDisplayName: 'Mon & Wed Lotto',
-    type: 'MonWedLotto',
+    typeDisplayName: 'Mon, Wed & Friday Lotto',
+    type: 'MondayWednesdayFridayLotto',
     name: 'MonFri',
     games: {
       1: [3, 12, 18, 27, 33, 43],
@@ -42,46 +42,28 @@ const tickets: FavoriteTicket[] = [
   },
   {
     id: 't2',
-    typeDisplayName: 'Mon & Wed Lotto',
-    type: 'MonWedLotto',
-    name: 'My Personal fav',
-    games: {
-      1: [1, 2, 3, 4, 5, 6],
-      2: [15, 11, 23, 45, 32, 1],
-      3: [15, 11, 23, 45, 32, 1],
-      4: [15, 11, 23, 45, 32, 1],
-      5: [15, 11, 23, 45, 32, 1],
-      6: [15, 11, 23, 45, 32, 1],
-      7: [15, 11, 23, 45, 32, 1],
-      8: [15, 11, 23, 45, 32, 1],
-      9: [15, 11, 23, 45, 32, 1],
-      10: [15, 11, 23, 45, 32, 1],
-      11: [15, 11, 23, 45, 32, 1],
-      12: [15, 11, 23, 45, 32, 1],
-    },
-  },
-  {
-    id: 't3',
     typeDisplayName: 'Saturday Lotto',
     type: 'TattsLotto',
     name: 'lucky numbers sat!',
     games: {
-      1: [1, 2, 3, 4, 5, 6],
-      2: [15, 11, 23, 45, 32, 1],
-      3: [43, 35, 22, 45, 13, 31],
-      4: [37, 30, 22, 24, 18, 31],
-      5: [43, 35, 22, 45, 16, 31],
-    },
-  },
-  {
-    id: 't4',
-    typeDisplayName: 'Saturday Lotto',
-    type: 'TattsLotto',
-    name: 'lucky numbers sat!',
-    games: {
-      1: [1, 2, 3, 4, 5, 6],
-      2: [15, 11, 23, 45, 32, 1],
-      3: [43, 35, 22, 45, 13, 31],
+      1: [4, 5, 8, 10, 11, 22],
+      2: [1, 2, 7, 14, 28, 33],
+      3: [1, 3, 6, 9, 31, 43],
+      4: [2, 16, 23, 31, 41, 43],
+      5: [8, 15, 18, 21, 33, 40],
+      6: [13, 20, 25, 33, 34, 43],
+      7: [11, 16, 22, 27, 35, 38],
+      8: [7, 9, 10, 24, 28, 36],
+      9: [1, 11, 16, 22, 37, 40],
+      10: [7, 11, 14, 22, 31, 39],
+      11: [1, 7, 8, 11, 22, 40],
+      12: [14, 17, 27, 28, 30, 44],
+      13: [1, 19, 24, 36, 38, 41],
+      14: [99, 17, 19, 24, 27, 28],
+      15: [4, 7, 8, 9, 12, 39],
+      16: [10, 20, 22, 24, 26, 33],
+      17: [2, 6, 7, 19, 33, 39],
+      18: [4, 11, 13, 27, 37, 43],
     },
   },
 ];
@@ -184,7 +166,7 @@ const Tickets = () => {
             title={`${ticket.name}`}
             description={ticket.typeDisplayName}
             topRightComponent={
-              <BasicSelect
+              <BasicSelect // TODO : Highlight selected option inside of drop down when dropdown is opened
                 key={ticket.id}
                 className="w-fit"
                 placeholder="Draw No."

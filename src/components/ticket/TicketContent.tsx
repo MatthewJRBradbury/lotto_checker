@@ -8,31 +8,7 @@ const TicketContent = ({ games, ticketResult }: TicketCardContentProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const gameList = Object.entries(games);
 
-  // move this logic up?
-  // let tr: DrawWinResult;
-  // for (const result in ticketResult) {
-  //   if (result) {
-  //     tr = ticketResult[result] as DrawWinResult;
-  //     console.log(
-  //       'Draw ' +
-  //         result +
-  //         ' Date: ' +
-  //         tr.DrawDate +
-  //         ' - Wins ' +
-  //         JSON.stringify(tr.Wins) +
-  //         ', Primarys ' +
-  //         JSON.stringify(tr.PrimaryNumbers) +
-  //         ' Secondarys ' +
-  //         JSON.stringify(tr.SecondaryNumbers)
-  //     );
-  //     console.log('Games: ' + tr.Wins.map((g) => g.Game + ' || '));
-  //   }
-  // }
-
-  if (ticketResult) {
-    console.log(ticketResult);
-  }
-
+  // TODO : Highlight Game wins, which division and winnings etc
   return (
     <div className="flex flex-col">
       <div className={`w-full overflow-auto ${gameList.length < 4 && 'mb-9'}`}>

@@ -79,7 +79,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
 
     // Act
     const result = checkForWin(
-      'MonWedLotto',
+      'MondayWednesdayFridayLotto',
       primary,
       secondary,
       game,
@@ -101,7 +101,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
 
     // Act
     const result = checkForWin(
-      'MonWedLotto',
+      'MondayWednesdayFridayLotto',
       primary,
       secondary,
       game,
@@ -123,7 +123,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
 
     // Act
     const result = checkForWin(
-      'MonWedLotto',
+      'MondayWednesdayFridayLotto',
       primary,
       secondary,
       game,
@@ -145,7 +145,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
 
     // Act
     const result = checkForWin(
-      'MonWedLotto',
+      'MondayWednesdayFridayLotto',
       primary,
       secondary,
       game,
@@ -167,7 +167,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
 
     // Act
     const result = checkForWin(
-      'MonWedLotto',
+      'MondayWednesdayFridayLotto',
       primary,
       secondary,
       game,
@@ -189,7 +189,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
 
     // Act
     const result = checkForWin(
-      'MonWedLotto',
+      'MondayWednesdayFridayLotto',
       primary,
       secondary,
       game,

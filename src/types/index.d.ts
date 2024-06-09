@@ -68,7 +68,7 @@ type ErrorInfo = {
 type JsonKeys<T> = keyof T;
 
 type DrawTypeDisplayName =
-  | 'Mon & Wed Lotto'
+  | 'Mon, Wed & Friday Lotto'
   | 'Saturday Lotto'
   | 'Powerball'
   | 'Set For Life'

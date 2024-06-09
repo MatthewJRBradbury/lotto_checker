@@ -9,7 +9,7 @@
         {"division": 6, "primaryNumberCount": 1, "secondaryNumberCount": 2}
     ]
   },
-  "MonWedLotto": {
+  "MondayWednesdayFridayLotto": {
     "winningCombinations": [
         {"division": 1, "primaryNumberCount": 6, "secondaryNumberCount": 0},
         {"division": 2, "primaryNumberCount": 5, "secondaryNumberCount": 1},
