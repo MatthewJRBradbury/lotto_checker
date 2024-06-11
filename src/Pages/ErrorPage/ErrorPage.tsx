@@ -6,7 +6,7 @@ type ErrorType = {
 };
 
 export default function ErrorPage() {
-  document.title = 'Lotto Checker - Error!';
+  document.title = 'Error! - Lotto Checker';
   const error = useRouteError() as ErrorType;
   console.error(error);
 

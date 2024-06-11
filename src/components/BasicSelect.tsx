@@ -11,7 +11,7 @@ const BasicSelect = ({ className, ...props }: BasicSelectProps) => {
   return (
     <div className={className}>
       <Select value={props.value} onValueChange={props.onValueChange}>
-        <SelectTrigger>
+        <SelectTrigger aria-label="Ticket draw date selector">
           <SelectValue placeholder={props?.placeholder ?? 'Select an option'}>
             {props.value}
           </SelectValue>

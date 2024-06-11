@@ -36,18 +36,20 @@ const TicketContent = ({ games, ticketResult }: TicketCardContentProps) => {
         <Button
           variant="ghost"
           size="icon"
+          aria-label="Expand / Shrink ticket to view all games"
           className="z-10 self-center"
-          aria-label="Expand ticket to view all games"
         >
           {isExpanded ? (
             <ChevronUpIcon
               className="z-10 h-10 w-10 transform self-center transition-transform duration-200 hover:-translate-y-1"
               onClick={() => setIsExpanded(!isExpanded)}
+              aria-label="Shrink ticket Icon"
             />
           ) : (
             <ChevronDownIcon
               className="z-10 h-10 w-10 transform self-center transition-transform duration-200 hover:translate-y-1"
               onClick={() => setIsExpanded(!isExpanded)}
+              aria-label="Expand ticket Icon"
             />
           )}
         </Button>
