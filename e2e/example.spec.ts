@@ -1,35 +1,16 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
-
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(
-    page.getByRole('heading', { name: 'Installation' })
-  ).toBeVisible();
-});
-
 test('has ticket title', async ({ page }) => {
-  await page.goto('http://localhost:5173/');
+  await page.goto('/');
   await page.getByRole('link', { name: 'Tickets' }).click();
-  await expect(page).toHaveTitle(/Lotto Checker/);
+  await expect(page).toHaveTitle(/Tickets - Lotto Checker/);
 });
 
 test('home page should not have automatically detectable accessibility violations', async ({
   page,
 }) => {
-  await page.goto('http://localhost:5173/');
+  await page.goto('http://localhost:5173/lotto_checker/');
 
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
@@ -39,7 +20,7 @@ test('home page should not have automatically detectable accessibility violation
 test('tickets page should not have automatically detectable accessibility violations', async ({
   page,
 }) => {
-  await page.goto('http://localhost:5173/tickets');
+  await page.goto('http://localhost:5173/lotto_checker/tickets');
 
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
@@ -49,7 +30,7 @@ test('tickets page should not have automatically detectable accessibility violat
 test('leetcode page should not have automatically detectable accessibility violations', async ({
   page,
 }) => {
-  await page.goto('http://localhost:5173/leetcode');
+  await page.goto('http://localhost:5173/lotto_checker/leetcode');
 
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 

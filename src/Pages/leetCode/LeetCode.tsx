@@ -180,6 +180,7 @@ const leets = [
 ];
 
 const LeetCode = () => {
+  document.title = 'Leetcode - Lotto Checker';
   const [filteredList, setFilteredList] = useState<typeof leets>(leets);
 
   const searchLeets = (input: string, list: typeof leets) => {

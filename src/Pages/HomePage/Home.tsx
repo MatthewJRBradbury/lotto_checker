@@ -1,4 +1,5 @@
 const Home = () => {
+  document.title = 'Home - Lotto Checker';
   return (
     <div>
       <h1>Welcome to home page 🏡</h1>
