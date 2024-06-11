@@ -6,6 +6,7 @@ type ErrorType = {
 };
 
 export default function ErrorPage() {
+  document.title = 'Lotto Checker - Error!';
   const error = useRouteError() as ErrorType;
   console.error(error);
 

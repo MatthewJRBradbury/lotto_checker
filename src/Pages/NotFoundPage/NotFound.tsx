@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
+  document.title = 'Lotto Checker - 404';
   return (
     <>
       <div>NotFound</div>

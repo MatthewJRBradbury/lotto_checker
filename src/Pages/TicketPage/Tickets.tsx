@@ -83,6 +83,7 @@ const createDrawDataRequest = (
 };
 
 const Tickets = () => {
+  document.title = 'Lotto Checker - Tickets';
   const [filteredList, setFilteredList] = useState<FavoriteTicket[]>(tickets);
   const [drawData, setDrawData] = useState<DrawResults | null>(null);
   const [drawReq] = useState<DrawDataRequest>(
