@@ -28,7 +28,7 @@ export function MobileNav({
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link
-          to="/"
+          to="/lotto_checker"
           onClick={() => showNav(false)}
           className="flex items-center space-x-2"
         >

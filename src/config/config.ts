@@ -4,15 +4,15 @@ export const navConfig: MainNavConfig = {
   mainNav: [
     {
       title: 'Home',
-      to: '/',
+      to: '/lotto_checker',
     },
     {
       title: 'Tickets',
-      to: '/tickets',
+      to: '/lotto_checker/tickets',
     },
     {
       title: 'Leet Code',
-      to: '/leetcode',
+      to: '/lotto_checker/leetcode',
     },
   ],
 };

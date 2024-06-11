@@ -19,7 +19,7 @@ export const MainNav = ({ items, children }: MainNavProps) => {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link
-        to="/"
+        to="/lotto_checker"
         aria-label="navigate home"
         className="hidden items-center space-x-2 md:flex"
       >

@@ -8,7 +8,7 @@ import LeetCode from '@/Pages/leetCode/LeetCode';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/lotto_checker/',
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
