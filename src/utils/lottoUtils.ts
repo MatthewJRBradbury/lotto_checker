@@ -80,9 +80,9 @@ export const checkForWin = (
     ) {
       response.Win = true;
       response.Division = combo.division;
-      response.Prize = `$${dividends.find(
-        (div) => div.Division === combo.division
-      )?.BlocDividend}`;
+      response.Prize = `$${
+        dividends.find((div) => div.Division === combo.division)?.BlocDividend
+      }`;
       return response;
     }
   }

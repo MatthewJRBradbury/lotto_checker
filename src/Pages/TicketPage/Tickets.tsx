@@ -82,6 +82,11 @@ const createDrawDataRequest = (
   };
 };
 
+const findMatchingTicketLabel =
+  (value: string) =>
+  (v: Record<string, DrawWinResultRecord | string>): boolean =>
+    v.label === value;
+
 const Tickets = () => {
   document.title = 'Tickets - Lotto Checker';
   const [filteredList, setFilteredList] = useState<FavoriteTicket[]>(tickets);
@@ -167,16 +172,23 @@ const Tickets = () => {
             title={`${ticket.name}`}
             description={ticket.typeDisplayName}
             topRightComponent={
-              <BasicSelect // TODO : Highlight selected option inside of drop down when dropdown is opened
+              <BasicSelect
                 key={ticket.id}
                 className="w-fit"
                 placeholder="Draw No."
-                options={ticketResults?.[ticket.id]}
-                onValueChange={(value: DrawWinResultRecord | string) => {
-                  if (value && typeof value !== 'string') {
+                options={ticketResults?.[ticket.id].map((v) => ({
+                  label: v.label,
+                  value: v.label,
+                }))}
+                onValueChange={(value: string) => {
+                  if (value) {
                     setTicketActiveDraws((prev) => ({
                       ...prev,
-                      [ticket.id]: value?.DrawWinResult,
+                      [ticket.id]: (
+                        ticketResults?.[ticket.id].find(
+                          findMatchingTicketLabel(value)
+                        )?.value as DrawWinResultRecord
+                      )?.DrawWinResult,
                     }));
                   }
                 }}
