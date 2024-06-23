@@ -14,8 +14,6 @@ export const theme = {
     center: true,
     padding: '2rem',
     screens: {
-      xxs: '320px',
-      xs: '450px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
@@ -24,6 +22,10 @@ export const theme = {
     },
   },
   extend: {
+    screens: {
+      xxs: '430px',
+      xs: '560px',
+    },
     colors: {
       border: 'hsl(var(--border))',
       input: 'hsl(var(--input))',

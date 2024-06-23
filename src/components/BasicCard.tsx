@@ -23,7 +23,7 @@ const BasicCard = ({ className, ...props }: BasicCardProps) => {
           {props?.topRightComponent}
         </div>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 gap-4 overflow-auto sm:justify-items-center">
+      <CardContent className="xxs:justify-items-center grid grid-cols-1 gap-4 overflow-auto">
         {props.children}
       </CardContent>
     </Card>
