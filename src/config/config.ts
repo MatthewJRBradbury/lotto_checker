@@ -19,5 +19,5 @@ export const navConfig: MainNavConfig = {
 
 export const globalConfig = {
   siteName: 'Lotto Checker',
-  footerContent: 'Built by MRJB',
+  footerContent: 'Built by MJRB',
 };

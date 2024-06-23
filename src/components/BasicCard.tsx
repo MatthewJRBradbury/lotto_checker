@@ -12,15 +12,18 @@ const BasicCard = ({ className, ...props }: BasicCardProps) => {
   return (
     <Card className={cn('sm:w-full', className)} {...props}>
       <CardHeader>
-        <div className="flex w-full flex-row justify-between">
-          <div className="flex flex-col">
-            <CardTitle className="text-xl">{props.title}</CardTitle>
+        <div className="flex w-full flex-col justify-between sm:flex-row">
+          <div className="flex flex-col pb-2 sm:pb-0">
+            <div className="flex flex-col sm:flex-row sm:items-center">
+              <CardTitle className="mr-2 text-xl">{props.title}</CardTitle>
+              {props?.titleTag}
+            </div>
             <CardDescription>{props?.description}</CardDescription>
           </div>
           {props?.topRightComponent}
         </div>
       </CardHeader>
-      <CardContent className="grid justify-center gap-4">
+      <CardContent className="grid grid-cols-1 gap-4 overflow-auto sm:justify-items-center">
         {props.children}
       </CardContent>
     </Card>

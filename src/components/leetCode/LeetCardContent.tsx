@@ -7,9 +7,9 @@ const LeetCardContent = ({
   funcAsString,
 }: LeetCardContentProps) => {
   /** TODO: add expected output and actual output, also make code section
-   * have nav for multiple solutions */
+   * have dropdown with search for multiple solutions and optionally make input a dynamic field */
   return (
-    <>
+    <div className="w-full">
       <h3>
         <b>Input:</b> ({input})
       </h3>
@@ -29,7 +29,7 @@ const LeetCardContent = ({
           codeBlock
         />
       </span>
-    </>
+    </div>
   );
 };
 

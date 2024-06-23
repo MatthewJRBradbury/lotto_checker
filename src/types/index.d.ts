@@ -20,6 +20,7 @@ export type SelectProps = ComponentProps<typeof Select>;
 export type CardProps = ComponentProps<typeof Card>;
 
 export type BasicCardProps = CardProps & {
+  titleTag?: ReactNode;
   description?: ReactNode;
   topRightComponent?: ReactNode;
 };
@@ -34,6 +35,7 @@ export type BasicSelectProps = SelectProps & {
 type Option<TLabel extends string, TValue> = {
   label: TLabel;
   value: TValue;
+  icon?: ReactNode;
 };
 
 export type LeetCardContentProps = {
@@ -92,6 +94,7 @@ type DrawWinResult = {
   label: string;
   DrawDate: string;
   Wins: WinCheckResult[];
+  TotalPrize: number;
   PrimaryNumbers: number[];
   SecondaryNumbers: number[];
 };
@@ -101,7 +104,7 @@ type DrawWinResultRecord = { number: string; DrawWinResult: DrawWinResult };
 type WinCheckResult = {
   Win: boolean;
   Division: number;
-  Prize: string | undefined;
+  Prize: number | undefined;
   Game: number[];
   PrimaryNumberCount: number;
   SecondaryNumberCount: number;
