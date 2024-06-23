@@ -23,7 +23,9 @@ export const theme = {
   },
   extend: {
     screens: {
-      xxs: '430px',
+      xxxxs: '375px',
+      xxxs: '430px',
+      xxs: '455px',
       xs: '560px',
     },
     colors: {

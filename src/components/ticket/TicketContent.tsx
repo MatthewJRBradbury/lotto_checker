@@ -15,8 +15,8 @@ const TicketContent = ({ games, ticketResult }: TicketCardContentProps) => {
         <table className="w-full min-w-full">
           <thead>
             <tr className="text-left text-sm font-semibold">
-              <th className="p-4 md:p-3">Game</th>
-              <th className="p-4 md:p-3">Numbers</th>
+              <th className="p-2 md:p-3">Game</th>
+              <th className="p-2 md:p-3">Numbers</th>
             </tr>
           </thead>
           <tbody className={isExpanded ? '' : 'max-h-[10rem] overflow-hidden'}>

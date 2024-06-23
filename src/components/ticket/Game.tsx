@@ -18,7 +18,7 @@ const Game: React.FC<GameProps> = ({ keyValue, numbers, results, ...rest }) => (
   <tr key={keyValue} {...rest}>
     <td className="w-1 p-4 text-center md:p-3">{keyValue}</td>
     <td className="p-4 md:p-3">
-      <div className="flex items-center gap-3">
+      <div className="xs:gap-3 flex items-center gap-1">
         {numbers.map((number) => {
           let color = colorOpts.regular;
           if (results?.PrimaryNumbers.includes(number)) {
@@ -30,7 +30,7 @@ const Game: React.FC<GameProps> = ({ keyValue, numbers, results, ...rest }) => (
             <div
               key={number}
               className={cn(
-                'xs:h-12 xs:w-12 flex h-7 w-7 items-center justify-center rounded-full text-gray-50',
+                'xxs:h-12 xxs:w-12 flex h-7 w-7 items-center justify-center rounded-full text-gray-50',
                 color
               )}
             >
