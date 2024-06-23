@@ -19,7 +19,11 @@ const BasicSelect = ({ className, ...props }: BasicSelectProps) => {
         <SelectContent>
           {props?.options?.map((option) => (
             <SelectItem key={option.label} value={option.value}>
-              {option.label}
+              <>
+                {option.label}
+                {option.icon && ' - '}
+                {option?.icon}
+              </>
             </SelectItem>
           ))}
         </SelectContent>

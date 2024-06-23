@@ -48,6 +48,10 @@ export const analyseDraw = (
       )}`,
       DrawDate: draw.DrawDate,
       Wins: winningGames,
+      TotalPrize: winningGames.reduce(
+        (accumulator, wg) => accumulator + (wg.Prize ?? 0),
+        0
+      ),
       PrimaryNumbers: draw.PrimaryNumbers,
       SecondaryNumbers: draw.SecondaryNumbers,
     };
@@ -65,7 +69,7 @@ export const checkForWin = (
   const response: WinCheckResult = {
     Win: false,
     Division: 0,
-    Prize: '$0.0',
+    Prize: 0,
     Game: game,
     PrimaryNumberCount: primary,
     SecondaryNumberCount: secondary,
@@ -80,11 +84,13 @@ export const checkForWin = (
     ) {
       response.Win = true;
       response.Division = combo.division;
-      response.Prize = `$${
-        dividends.find((div) => div.Division === combo.division)?.BlocDividend
-      }`;
+      response.Prize = dividends.find(
+        (div) => div.Division === combo.division
+      )?.BlocDividend;
       return response;
     }
   }
   return response;
 };
+
+// export const

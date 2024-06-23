@@ -17,6 +17,7 @@ import TwoColumnGrid from '@/components/TwoColumnGrid';
 import { fetchDrawData } from '@/API/theLottApis';
 import { analyseDraw } from '@/utils/lottoUtils';
 import BasicSelect from '@/components/BasicSelect';
+import { Badge } from '@/components/ui/badge/badge';
 
 // TODO: Replace with API request to backend (yet to create)
 const tickets: FavoriteTicket[] = [
@@ -171,6 +172,14 @@ const Tickets = () => {
             key={ticket.id}
             title={`${ticket.name}`}
             description={ticket.typeDisplayName}
+            titleTag={
+              (ticketActiveDraws?.[ticket.id]?.Wins?.length ?? 0) > 0 && (
+                <Badge
+                  variant="success"
+                  className="mb-1 mt-1 h-fit w-fit"
+                >{`Win - $${ticketActiveDraws?.[ticket.id]?.TotalPrize}`}</Badge>
+              )
+            }
             topRightComponent={
               <BasicSelect
                 key={ticket.id}
@@ -179,6 +188,8 @@ const Tickets = () => {
                 options={ticketResults?.[ticket.id].map((v) => ({
                   label: v.label,
                   value: v.label,
+                  icon: ((v.value as DrawWinResultRecord).DrawWinResult.Wins
+                    ?.length ?? 0) > 0 && <Badge variant="success">Win</Badge>,
                 }))}
                 onValueChange={(value: string) => {
                   if (value) {
