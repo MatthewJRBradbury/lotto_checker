@@ -30,7 +30,7 @@ const Game: React.FC<GameProps> = ({ keyValue, numbers, results, ...rest }) => (
             <div
               key={number}
               className={cn(
-                'flex h-7 w-7 items-center justify-center rounded-full text-gray-50 sm:h-12 sm:w-12',
+                'xs:h-12 xs:w-12 flex h-7 w-7 items-center justify-center rounded-full text-gray-50',
                 color
               )}
             >
