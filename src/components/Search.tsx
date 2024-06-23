@@ -19,7 +19,6 @@ export const Search = <T extends string | object>({
       <SearchIcon className="absolute left-2 top-1/2 h-4 w-5 -translate-y-1/2 transform" />
       <Input
         type="search"
-        autoFocus
         className={'pl-8'}
         onChange={(e) => searchFunc(e.target.value, list, key)}
         {...rest}
