@@ -89,7 +89,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
     // Assert
     expect(result.Win).toBe(true);
     expect(result.Division).toBe(1);
-    expect(result.Prize).toBe('$1000000');
+    expect(result.Prize).toBe(1000000);
     expect(result.Game).toEqual(game);
     expect(result.PrimaryNumberCount).toBe(primary);
     expect(result.SecondaryNumberCount).toBe(secondary);
@@ -111,7 +111,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
     // Assert
     expect(result.Win).toBe(true);
     expect(result.Division).toBe(2);
-    expect(result.Prize).toBe('$100000');
+    expect(result.Prize).toBe(100000);
     expect(result.Game).toEqual(game);
     expect(result.PrimaryNumberCount).toBe(primary);
     expect(result.SecondaryNumberCount).toBe(secondary);
@@ -133,7 +133,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
     // Assert
     expect(result.Win).toBe(true);
     expect(result.Division).toBe(3);
-    expect(result.Prize).toBe('$10000');
+    expect(result.Prize).toBe(10000);
     expect(result.Game).toEqual(game);
     expect(result.PrimaryNumberCount).toBe(primary);
     expect(result.SecondaryNumberCount).toBe(secondary);
@@ -155,7 +155,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
     // Assert
     expect(result.Win).toBe(true);
     expect(result.Division).toBe(4);
-    expect(result.Prize).toBe('$1000');
+    expect(result.Prize).toBe(1000);
     expect(result.Game).toEqual(game);
     expect(result.PrimaryNumberCount).toBe(primary);
     expect(result.SecondaryNumberCount).toBe(secondary);
@@ -177,7 +177,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
     // Assert
     expect(result.Win).toBe(true);
     expect(result.Division).toBe(5);
-    expect(result.Prize).toBe('$100');
+    expect(result.Prize).toBe(100);
     expect(result.Game).toEqual(game);
     expect(result.PrimaryNumberCount).toBe(primary);
     expect(result.SecondaryNumberCount).toBe(secondary);
@@ -199,7 +199,7 @@ describe('should return a WinCheckResult object with the correct values', () => 
     // Assert
     expect(result.Win).toBe(false);
     expect(result.Division).toBe(0);
-    expect(result.Prize).toBe('$0.0');
+    expect(result.Prize).toBe(0);
     expect(result.Game).toEqual(game);
     expect(result.PrimaryNumberCount).toBe(primary);
     expect(result.SecondaryNumberCount).toBe(secondary);
