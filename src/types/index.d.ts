@@ -142,6 +142,11 @@ type WinningCombo = {
   secondaryNumberCount: number;
 };
 
+type WinningDivisionPrize = {
+  division: number;
+  prize: number | undefined;
+};
+
 export type {
   DrawType,
   DrawResults,
@@ -150,6 +155,7 @@ export type {
   DrawDataRequest,
   WinCheckResult,
   WinningCombo,
+  WinningDivisionPrize,
   DrawWinResults,
   DrawWinResultRecord,
   DrawWinResult,

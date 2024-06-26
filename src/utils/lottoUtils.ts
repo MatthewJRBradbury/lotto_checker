@@ -6,10 +6,12 @@ import {
   DrawType,
   WinningCombo,
   DrawWinResults,
+  WinningDivisionPrize,
 } from '@/types';
 
 import gameRules from '@/config/gameRules.json';
 import { formatSimpleDate } from './dateUtils';
+import { numericArraysHaveSameContent } from './arrayUtils';
 
 export const analyseDraw = (
   drawType: DrawType,
@@ -93,4 +95,18 @@ export const checkForWin = (
   return response;
 };
 
-// export const
+export const gamePrizeInfoIfWin = (
+  game: number[],
+  winList: WinCheckResult[] | undefined
+): WinningDivisionPrize | undefined => {
+  if (winList) {
+    for (const win of winList) {
+      if (numericArraysHaveSameContent(game, win.Game)) {
+        return {
+          division: win.Division,
+          prize: win.Prize,
+        };
+      }
+    }
+  }
+};
