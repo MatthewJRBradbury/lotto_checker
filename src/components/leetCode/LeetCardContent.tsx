@@ -6,8 +6,11 @@ const LeetCardContent = ({
   func,
   funcAsString,
 }: LeetCardContentProps) => {
-  /** TODO: add expected output and actual output, also make code section
-   * have dropdown with search for multiple solutions and optionally make input a dynamic field */
+  /** TODO: - add expected output and actual output, 
+   * - dropdown with search for multiple solutions 
+   * - make input a dynamic field 
+   * - TODO : code not displaying correctly after build / deploy FIX this!
+   * */
   return (
     <div className="w-full">
       <h3>
