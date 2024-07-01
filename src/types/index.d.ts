@@ -2,6 +2,7 @@ import { Card } from '@/components/ui/card';
 import { Select } from '@/components/ui/select';
 import { ComponentProps, ReactNode } from 'react';
 import gameRules from '@/config/gameRules.json';
+import { difficulty } from '@/Pages/leetCode/leetConstants';
 
 export type NavItem = {
   title: string;
@@ -42,7 +43,12 @@ export type LeetCardContentProps = {
   input: string | ReactNode;
   func: typeof function;
   funcAsString: string;
+  timeComplexity?: string;
+  spaceComplexity?: string;
+  difficulty?: leetDifficulty;
 };
+
+export type LeetDifficulty = difficulty;
 
 export type TicketCardContentProps = {
   games: Games;

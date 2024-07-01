@@ -22,6 +22,9 @@ import { sumEvenOddIndexes } from '@/lts/sumEvenOddIndexes';
 import { sumOfStringDigits } from '@/lts/sumOfStringDigits';
 import { fuzzySearch } from '@/utils/searchUtils';
 import { useState } from 'react';
+import { longestSubstrNoRepeatChars } from '@/lts/longestSubstrNoRepeatChars';
+import { difficulty } from './leetConstants';
+import { findMedianSortedArrays } from '@/lts/medianOfTwoSortedArrays';
 
 const leets = [
   {
@@ -177,6 +180,27 @@ const leets = [
     fnResult: () => isPowerOfThree(9).toString(),
     fn: isPowerOfThree,
   },
+  {
+    title: 'Longest Substring without repeating characters',
+    desc: `Algorithm that efficiently finds the length of the longest substring without repeating characters using two pointers (left and right) and a dictionary (count) to keep track of character counts. It iterates through the string once, making it a linear time complexity algorithm. (Sliding window implementation)`,
+    difficulty: difficulty.medium,
+    input: 'pwwkew',
+    timeComplexity: 'O(N)',
+    spaceComplexity: 'O(1)',
+    fnResult: () => longestSubstrNoRepeatChars('pwwkew').toString(),
+    fn: longestSubstrNoRepeatChars,
+  },
+  {
+    title: 'Median of Two Sorted Arrays',
+    desc: `Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.`,
+    difficulty: difficulty.hard,
+    input: '[1, 3], [4]',
+    timeComplexity:
+      'O(n log n) - Possible best with other solution = O(log (m+n))', // TODO: revisit this one!
+    spaceComplexity: 'O(m + n)',
+    fnResult: () => findMedianSortedArrays([1, 3], [4]).toString(),
+    fn: findMedianSortedArrays,
+  },
 ];
 
 const LeetCode = () => {
@@ -211,6 +235,9 @@ const LeetCode = () => {
                 input={leet.input}
                 func={leet.fnResult}
                 funcAsString={`const ${leet.fn.name} = ${leet.fn.toString()}`}
+                timeComplexity={leet?.timeComplexity}
+                spaceComplexity={leet?.spaceComplexity}
+                difficulty={leet?.difficulty}
               />
             </BasicCard>
           );
