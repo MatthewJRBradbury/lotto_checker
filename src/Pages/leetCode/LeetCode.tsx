@@ -22,6 +22,7 @@ import { sumEvenOddIndexes } from '@/lts/sumEvenOddIndexes';
 import { sumOfStringDigits } from '@/lts/sumOfStringDigits';
 import { fuzzySearch } from '@/utils/searchUtils';
 import { useState } from 'react';
+import { longestSubstrNoRepeatChars } from '@/lts/longestSubstrNoRepeatChars';
 
 const leets = [
   {
@@ -177,6 +178,15 @@ const leets = [
     fnResult: () => isPowerOfThree(9).toString(),
     fn: isPowerOfThree,
   },
+  {
+    title: 'Longest Substring without repeating characters',
+    desc: `Algorithm that efficiently finds the length of the longest substring without repeating characters using two pointers (left and right) and a dictionary (count) to keep track of character counts. It iterates through the string once, making it a linear time complexity algorithm.`,
+    input: 'pwwkew',
+    timeComplexity: 'O(N)',
+    spaceComplexity: 'O(1)',
+    fnResult: () => longestSubstrNoRepeatChars('pwwkew').toString(),
+    fn: longestSubstrNoRepeatChars,
+  },
 ];
 
 const LeetCode = () => {
@@ -211,6 +221,8 @@ const LeetCode = () => {
                 input={leet.input}
                 func={leet.fnResult}
                 funcAsString={`const ${leet.fn.name} = ${leet.fn.toString()}`}
+                timeComplexity={leet?.timeComplexity}
+                spaceComplexity={leet?.spaceComplexity}
               />
             </BasicCard>
           );

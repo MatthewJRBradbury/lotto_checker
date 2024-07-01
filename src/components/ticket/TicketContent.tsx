@@ -8,7 +8,6 @@ const TicketContent = ({ games, ticketResult }: TicketCardContentProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const gameList = Object.entries(games);
 
-  // TODO : Highlight Game wins, which division and winnings etc
   return (
     <div className="flex flex-col">
       <div className={`w-full overflow-auto ${gameList.length < 4 && 'mb-9'}`}>

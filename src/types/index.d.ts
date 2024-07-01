@@ -42,6 +42,8 @@ export type LeetCardContentProps = {
   input: string | ReactNode;
   func: typeof function;
   funcAsString: string;
+  timeComplexity?: string;
+  spaceComplexity?: string;
 };
 
 export type TicketCardContentProps = {
