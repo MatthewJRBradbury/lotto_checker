@@ -46,6 +46,7 @@ export type LeetCardContentProps = {
   timeComplexity?: string;
   spaceComplexity?: string;
   difficulty?: leetDifficulty;
+  algorithmLink?: { link: string; linkTitle: string };
 };
 
 export type LeetDifficulty = difficulty;

@@ -8,6 +8,7 @@ const LeetCardContent = ({
   timeComplexity,
   spaceComplexity,
   difficulty,
+  algorithmLink,
 }: LeetCardContentProps) => {
   /** TODO: - add expected output and actual output,
    * - dropdown with search for multiple solutions
@@ -17,6 +18,11 @@ const LeetCardContent = ({
    * */
   return (
     <div className="w-full">
+      {algorithmLink && (
+        <a className="hyperlink" href={algorithmLink.link}>
+          {algorithmLink.linkTitle}
+        </a>
+      )}
       {difficulty && (
         <h3>
           <b>Difficulty:</b> {difficulty}

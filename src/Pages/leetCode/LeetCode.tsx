@@ -25,6 +25,14 @@ import { useState } from 'react';
 import { longestSubstrNoRepeatChars } from '@/lts/longestSubstrNoRepeatChars';
 import { difficulty } from './leetConstants';
 import { findMedianSortedArrays } from '@/lts/medianOfTwoSortedArrays';
+import { longestPalindrome } from '@/lts/longestPalindromicSubstring';
+import { zigzagconvert } from '@/lts/zigzagConversion';
+import { reverseInteger } from '@/lts/reverseInteger';
+import { merge } from '@/lts/mergeSortedArray';
+import { removeElement } from '@/lts/removeElementInPlaceArray';
+import { removeDupesInSortedNumericArrayFast } from '@/lts/removeDuplicatesInSortedNumericArray';
+import { removeThirdDuplicatesInSortedNumericArray } from '@/lts/removeThirdDuplicatesInSortedNumericArray';
+import { majorityElement } from '@/lts/majorityElement';
 
 const leets = [
   {
@@ -201,6 +209,105 @@ const leets = [
     fnResult: () => findMedianSortedArrays([1, 3], [4]).toString(),
     fn: findMedianSortedArrays,
   },
+  {
+    title: 'Longest Palindromic Substring',
+    desc: `Given a string, return the longest palindromic substring. Example below is the "Expand Around Center" approach for finding the longest palindromic substring in a given string. This approach works by iterating through each character in the string and expanding around it to check for palindromes. It takes advantage of the fact that a palindrome can be centered around a single character (in the case of odd-length palindromes) or between two characters (in the case of even-length palindromes). By expanding from each character, it identifies the longest palindrome.`,
+    difficulty: difficulty.medium,
+    input: 'ac',
+    timeComplexity: 'O(n^2)',
+    spaceComplexity: 'O(1)',
+    fnResult: () => longestPalindrome('ac').toString(),
+    fn: longestPalindrome,
+  },
+  {
+    title: 'Zigzag Conversion',
+    desc: `Given a string, expect the string to be split between X number of rows in a zigzag pattern so given 
+    "PAYPALISHIRING" rows should result as follows row1: [P, A, H, N] , row2: [A, P, L, S, I, I, G] , row3: [Y, I, R].
+    then return rows concatenated: "PAHNAPLSIIGYIR"`,
+    difficulty: difficulty.medium,
+    input: 'String: "PAYPALISHIRING" , Rows: 3',
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    fnResult: () => zigzagconvert('PAYPALISHIRING', 3).toString(),
+    fn: zigzagconvert,
+  },
+  {
+    title: 'Reverse Integer',
+    desc: `Given a signed 32-bit integer x, return x with its digits reversed. 
+    If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.`,
+    difficulty: difficulty.medium,
+    input: -123,
+    fnResult: () => reverseInteger(-123).toString(),
+    fn: reverseInteger,
+  },
+  {
+    title: 'Merge Sorted Array',
+    desc: `Given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of 
+    elements in nums1 and nums2 respectively. Merge nums1 and nums2 into a single array sorted in non-decreasing order. The final sorted 
+    array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, 
+    nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements 
+    are set to 0 and should be ignored. nums2 has a length of n.`,
+    difficulty: difficulty.easy,
+    input: 'nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3',
+    fnResult: () => merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3).toString(),
+    fn: merge,
+  },
+  {
+    title: 'Remove Element Array',
+    desc: `Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
+    The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.`,
+    difficulty: difficulty.easy,
+    input: 'nums = [0,1,2,2,3,0,4,2], val = 2',
+    fnResult: () => removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2).toString(),
+    fn: removeElement,
+  },
+  {
+    title: 'Remove Duplicates in sorted numeric Array',
+    desc: `Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such 
+    that each unique element appears only once. The relative order of the elements should be kept the same. 
+    Then return the number of unique elements in nums.`,
+    difficulty: difficulty.easy,
+    input: '[1, 1, 2, 2, 3, 4]',
+    timeComplexity: 'O(N)',
+    spaceComplexity: 'O(1)',
+    fnResult: () =>
+      removeDupesInSortedNumericArrayFast([1, 1, 2, 2, 3, 4]).toString(),
+    fn: removeDupesInSortedNumericArrayFast,
+  },
+  {
+    title: 'Remove third Duplicates in sorted numeric Array',
+    desc: `Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place 
+    such that each unique element appears at most twice. The relative order of the elements should be kept the same.
+    Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the 
+    first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of 
+    nums should hold the final result. It does not matter what you leave beyond the first k elements. 
+    Return k after placing the final result in the first k slots of nums.`,
+    difficulty: difficulty.medium,
+    input: '[1, 1, 2, 2, 2, 3, 4]',
+    timeComplexity: 'O(N)',
+    spaceComplexity: 'O(1)',
+    fnResult: () =>
+      removeThirdDuplicatesInSortedNumericArray([
+        1, 1, 2, 2, 2, 3, 4,
+      ]).toString(),
+    fn: removeThirdDuplicatesInSortedNumericArray,
+  },
+  {
+    title: 'Majority Element - numeric',
+    desc: `Given an array nums of size n, return the majority element. 
+    The majority element is the element that appears more than ⌊n / 2⌋ times. 
+    Is assumed that the majority element always exists in the array.`,
+    algoLink: {
+      link: 'https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm',
+      linkTitle: 'Boyer Moore majority vote algorithm',
+    },
+    difficulty: difficulty.easy,
+    input: '[3, 2, 3]',
+    timeComplexity: 'O(N)',
+    spaceComplexity: 'O(1)',
+    fnResult: () => majorityElement([3, 2, 3]).toString(),
+    fn: majorityElement,
+  },
 ];
 
 const LeetCode = () => {
@@ -238,6 +345,7 @@ const LeetCode = () => {
                 timeComplexity={leet?.timeComplexity}
                 spaceComplexity={leet?.spaceComplexity}
                 difficulty={leet?.difficulty}
+                algorithmLink={leet?.algoLink}
               />
             </BasicCard>
           );
