@@ -10,19 +10,19 @@ export const zigzagconvert = (s: string, numRows: number): string => {
       rows.push('');
     }
     rows[currRow] += element;
-    console.log('Before inc: ' + currRow);
+    // console.log('Before inc: ' + currRow);
     if (!moveForward) {
       currRow = currRow - 1;
       if (currRow === 0) {
         moveForward = !moveForward;
       }
-      console.log(currRow);
+      // console.log(currRow);
     } else {
       currRow = currRow + 1;
       if (currRow === numRows - 1) {
         moveForward = !moveForward;
       }
-      console.log(currRow);
+      // console.log(currRow);
     }
   }
   return rows.join('');
