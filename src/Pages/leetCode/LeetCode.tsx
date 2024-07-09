@@ -346,6 +346,7 @@ const LeetCode = () => {
                 spaceComplexity={leet?.spaceComplexity}
                 difficulty={leet?.difficulty}
                 algorithmLink={leet?.algoLink}
+                constraints={leet?.constraints}
               />
             </BasicCard>
           );
