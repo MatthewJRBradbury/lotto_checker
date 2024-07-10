@@ -4,8 +4,7 @@ Do not return anything, modify nums1 in-place instead.
 export const merge = (
   nums1: number[],
   m: number,
-  nums2: number[],
-  n: number
+  nums2: number[]
 ): number[] => {
   const temp2 = [...nums1.slice(0, m), ...nums2].sort((a, b) => a - b);
 
