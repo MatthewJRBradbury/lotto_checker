@@ -8,6 +8,8 @@ const LeetCardContent = ({
   timeComplexity,
   spaceComplexity,
   difficulty,
+  algorithmLink,
+  constraints,
 }: LeetCardContentProps) => {
   /** TODO: - add expected output and actual output,
    * - dropdown with search for multiple solutions
@@ -17,24 +19,43 @@ const LeetCardContent = ({
    * */
   return (
     <div className="w-full">
+      {algorithmLink && (
+        <div className="pb-1">
+          <a className="hyperlink" href={algorithmLink.link}>
+            {algorithmLink.linkTitle}
+          </a>
+        </div>
+      )}
+      {constraints && (
+        <div className="pb-1">
+          <h3>
+            <b>Constraints:</b>
+          </h3>
+          <ul className="list-disc pl-4">
+            {constraints.map((c: string) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       {difficulty && (
-        <h3>
+        <h3 className="pb-1">
           <b>Difficulty:</b> {difficulty}
         </h3>
       )}
-      <h3>
+      <h3 className="pb-1">
         <b>Input:</b> ({input})
       </h3>
-      <h3>
+      <h3 className="pb-1">
         <b>Output:</b> {func?.()}
       </h3>
       {timeComplexity && (
-        <h3>
+        <h3 className="pb-1">
           <b>Time Complexity:</b> {timeComplexity}
         </h3>
       )}
       {spaceComplexity && (
-        <h3>
+        <h3 className="pb-1">
           <b>Space Complexity:</b> {spaceComplexity}
         </h3>
       )}

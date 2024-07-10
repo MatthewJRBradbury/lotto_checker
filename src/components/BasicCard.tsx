@@ -14,7 +14,7 @@ const BasicCard = ({ className, ...props }: BasicCardProps) => {
       <CardHeader>
         <div className="flex w-full flex-col justify-between sm:flex-row">
           <div className="flex flex-col pb-2 sm:pb-0">
-            <div className="flex flex-col sm:flex-row sm:items-center">
+            <div className="flex flex-col pb-1 sm:flex-row sm:items-center">
               <CardTitle className="mr-2 text-xl">{props.title}</CardTitle>
               {props?.titleTag}
             </div>
