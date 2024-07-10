@@ -48,6 +48,7 @@ import { intToRoman } from '@/lts/integerToRoman';
 import { lengthOfLastWord } from '@/lts/lengthOfLastWord';
 import { longestCommonPrefix } from '@/lts/longestCommonPrefix';
 import { reverseWords } from '@/lts/reverseWordsInString';
+import { strStr } from '@/lts/findIndexOfFirstWordsOccurence';
 
 const leets = [
   {
@@ -243,6 +244,11 @@ const leets = [
     input: 'String: "PAYPALISHIRING" , Rows: 3',
     timeComplexity: 'O(n)',
     spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= s.length <= 1000',
+      's consists of English letters (lower-case and upper-case), ","" and "."',
+      '1 <= numRows <= 1000',
+    ],
     fnResult: () => zigzagconvert('PAYPALISHIRING', 3).toString(),
     fn: zigzagconvert,
   },
@@ -264,7 +270,7 @@ const leets = [
     are set to 0 and should be ignored. nums2 has a length of n.`,
     difficulty: difficulty.easy,
     input: 'nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3',
-    fnResult: () => merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3).toString(),
+    fnResult: () => merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6]).toString(),
     fn: merge,
   },
   {
@@ -525,6 +531,21 @@ const leets = [
     ],
     fnResult: () => reverseWords('a good   example').toString(),
     fn: reverseWords,
+  },
+  {
+    title: 'Find the Index of the First Occurrence in a String',
+    desc: `Given two strings needle and haystack, return the index of the first 
+    occurrence of needle in haystack, or -1 if needle is not part of haystack.`,
+    difficulty: difficulty.easy,
+    input: 'haystack = "sadbutsad", needle = "sad"',
+    timeComplexity: 'O(N − M + 1)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      '1 <= haystack.length, needle.length <= 104',
+      'haystack and needle consist of only lowercase English characters.',
+    ],
+    fnResult: () => strStr('sadbutsad', 'sad').toString(),
+    fn: strStr,
   },
 ];
 
