@@ -49,6 +49,21 @@ import { lengthOfLastWord } from '@/lts/lengthOfLastWord';
 import { longestCommonPrefix } from '@/lts/longestCommonPrefix';
 import { reverseWords } from '@/lts/reverseWordsInString';
 import { strStr } from '@/lts/findIndexOfFirstWordsOccurence';
+import { fullJustify } from '@/lts/justification';
+import { isValidPalindrome } from '@/lts/validPalindrome';
+import { isSubsequence } from '@/lts/isSubsequence';
+import { twoSum2 } from '@/lts/twoSum2';
+import { maxArea } from '@/lts/containerWithMostWater';
+import { threeSum } from '@/lts/3Sum';
+import { minSubArrayLen } from '@/lts/minSizeSubarraySum';
+import { substrWithConcatOfAllWords } from '@/lts/substrWithConcatOfAllWords';
+import { minWindow } from '@/lts/minWindowSubstr';
+import { isValidSudoku } from '@/lts/validSudoku';
+import { spiralOrder } from '@/lts/spiralMatrix';
+import { rotateImage } from '@/lts/rotateImage';
+import { setZeroes } from '@/lts/setMatrixZeroes';
+import { gameOfLife } from '@/lts/gameOfLife';
+import { canConstruct } from '@/lts/randsomNote';
 
 const leets = [
   {
@@ -211,6 +226,10 @@ const leets = [
     input: 'pwwkew',
     timeComplexity: 'O(N)',
     spaceComplexity: 'O(1)',
+    constraints: [
+      '0 <= s.length <= 5 * 10^4',
+      's consists of English letters, digits, symbols and spaces',
+    ],
     fnResult: () => longestSubstrNoRepeatChars('pwwkew').toString(),
     fn: longestSubstrNoRepeatChars,
   },
@@ -547,6 +566,356 @@ const leets = [
     fnResult: () => strStr('sadbutsad', 'sad').toString(),
     fn: strStr,
   },
+  {
+    title: 'Text Justification',
+    desc: `Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters 
+    and is fully (left and right) justified. You should pack your words in a greedy approach; that is, pack as many words as you can in each line. 
+    Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters. Extra spaces between words should be distributed 
+    as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left 
+    will be assigned more spaces than the slots on the right. For the last line of text, it should be left-justified, and no extra space 
+    is inserted between words.`,
+    difficulty: difficulty.hard,
+    input: `words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a",
+    "computer.", "Art", "is", "everything", "else", "we", "do"], maxWidth = 20`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      '1 <= words.length <= 300',
+      '1 <= words[i].length <= 20',
+      'words[i] consists of only English letters and symbols',
+      '1 <= maxWidth <= 100',
+      'words[i].length <= maxWidth',
+    ],
+    fnResult: () =>
+      fullJustify(
+        [
+          'Science',
+          'is',
+          'what',
+          'we',
+          'understand',
+          'well',
+          'enough',
+          'to',
+          'explain',
+          'to',
+          'a',
+          'computer.',
+          'Art',
+          'is',
+          'everything',
+          'else',
+          'we',
+          'do',
+        ],
+        20
+      ).toString(),
+    fn: fullJustify,
+  },
+  {
+    title: 'Valid Palindrome',
+    desc: `A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, 
+    it reads the same forward and backward. Alphanumeric characters include letters and numbers. Given a string s, return true if it is a palindrome, 
+    or false otherwise.`,
+    difficulty: difficulty.easy,
+    input: `A man, a plan, a canal: Panama`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= s.length <= 2 * 105',
+      's consists only of printable ASCII characters',
+    ],
+    fnResult: () =>
+      isValidPalindrome('A man, a plan, a canal: Panama').toString(),
+    fn: isValidPalindrome,
+  },
+  {
+    title: 'Is Subsequence',
+    desc: `Given two strings s and t, return true if s is a subsequence of t, or false otherwise. A subsequence of a string is a new 
+    string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative 
+    positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).`,
+    difficulty: difficulty.easy,
+    input: `s = "abc", t = "ahbgdc"`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      '0 <= s.length <= 100',
+      '0 <= t.length <= 104',
+      's and t consist only of lowercase English letters.',
+    ],
+    minutesTaken: 23,
+    fnResult: () => isSubsequence('abc', 'ahbgdc').toString(),
+    fn: isSubsequence,
+  },
+  {
+    title: 'Two Sum II - Input Array is sorted',
+    desc: `Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, 
+    find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] 
+    and numbers[index2] where 1 <= index1 < index2 <= numbers.length. Return the indices of the two numbers, index1 and index2, 
+    added by one as an integer array [index1, index2] of length 2.`,
+    difficulty: difficulty.medium,
+    input: `numbers = [2,7,11,15], target = 9`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      '2 <= numbers.length <= 3 * 10^4',
+      '-1000 <= numbers[i] <= 1000',
+      'numbers is sorted in non-decreasing order',
+      '-1000 <= target <= 1000',
+      'The tests are generated such that there is exactly one solution',
+    ],
+    minutesTaken: 40,
+    fnResult: () => twoSum2([2, 7, 11, 15], 9).toString(),
+    fn: twoSum2,
+  },
+  {
+    title: 'Container with Most water',
+    desc: `Given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are 
+    (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container, such that the container contains the most water. 
+    Return the maximum amount of water a container can store.`,
+    difficulty: difficulty.medium,
+    input: `[1, 8, 6, 2, 5, 4, 8, 3, 7]`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      'n == height.length',
+      '2 <= n <= 10^5',
+      '0 <= height[i] <= 10^4',
+    ],
+    minutesTaken: 60,
+    fnResult: () => maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]).toString(),
+    fn: maxArea,
+  },
+  {
+    title: '3Sum',
+    desc: `Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, 
+    and nums[i] + nums[j] + nums[k] == 0. Notice that the solution set must not contain duplicate triplets.`,
+    difficulty: difficulty.medium,
+    input: `[-1,0,1,2,-1,-4]`,
+    timeComplexity: 'O(n^2)',
+    spaceComplexity: 'O(n)',
+    constraints: ['3 <= nums.length <= 3000', '-10^5 <= nums[i] <= 10^5'],
+    fnResult: () => threeSum([-1, 0, 1, 2, -1, -4]).toString(),
+    fn: threeSum,
+  },
+  {
+    title: 'Minimum Size Subarray Sum',
+    desc: `Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray 
+    whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.`,
+    difficulty: difficulty.medium,
+    input: `target = 7, nums = [2,3,1,2,4,3]`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      '1 <= target <= 10^9',
+      '1 <= nums.length <= 10^5',
+      '1 <= nums[i] <= 10^4',
+    ],
+    fnResult: () => minSubArrayLen(7, [2, 3, 1, 2, 4, 3]).toString(),
+    fn: minSubArrayLen,
+  },
+  {
+    title: 'Substring with Concatenation of All Words',
+    desc: `given a string s and an array of strings words. All the strings of words 
+    are of the same length. A concatenated string is a string that exactly contains all 
+    the strings of any permutation of words concatenated. For example, if 
+    words = ["ab","cd","ef"], then "abcdef", "abefcd", "cdabef", "cdefab", "efabcd", and 
+    "efcdab" are all concatenated strings. "acdbef" is not a concatenated string 
+    because it is not the concatenation of any permutation of words. Return an array of 
+    the starting indices of all the concatenated substrings in s. You can return the 
+    answer in any order.`,
+    difficulty: difficulty.hard,
+    input: `s = "barfoothefoobarman", words = ["foo","bar"]`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= s.length <= 10^4',
+      '1 <= words.length <= 5000',
+      '1 <= words[i].length <= 30',
+      's and words[i] consist of lowercase English letters',
+    ],
+    fnResult: () =>
+      substrWithConcatOfAllWords('barfoothefoobarman', [
+        'foo',
+        'bar',
+      ]).toString(),
+    fn: substrWithConcatOfAllWords,
+  },
+  {
+    title: 'Minimum Window Substring',
+    desc: `Given two strings s and t of lengths m and n respectively, return the minimum window 
+    substring of s such that every character in t (including duplicates) is included in the window. 
+    If there is no such substring, return the empty string "".`,
+    difficulty: difficulty.hard,
+    input: `s = "ADOBECODEBANC", t = "ABC"`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(m+n)',
+    constraints: [
+      'm == s.length',
+      'n == t.length',
+      '1 <= m, n <= 10^5',
+      's and t consist of uppercase and lowercase English letters',
+    ],
+    fnResult: () => minWindow('ADOBECODEBANC', 'ABC').toString(),
+    fn: minWindow,
+  },
+  {
+    title: 'Valid Sudoku',
+    desc: `Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+    Each row must contain the digits 1-9 without repetition. Each column must contain the digits 1-9 without repetition. 
+    Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition. 
+    Note: A Sudoku board (partially filled) could be valid but is not necessarily solvable. 
+    Only the filled cells need to be validated according to the mentioned rules.`,
+    difficulty: difficulty.medium,
+    minutesTaken: 93,
+    input: `board = 
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]`,
+    timeComplexity: 'O(1)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      'board.length == 9',
+      'board[i].length == 9',
+      'board[i][j] is a digit 1-9 or "."',
+    ],
+    fnResult: () =>
+      isValidSudoku([
+        ['5', '3', '.', '.', '7', '.', '.', '.', '.'],
+        ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
+        ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
+        ['8', '.', '.', '.', '6', '.', '.', '.', '3'],
+        ['4', '.', '.', '8', '.', '3', '.', '.', '1'],
+        ['7', '.', '.', '.', '2', '.', '.', '.', '6'],
+        ['.', '6', '.', '.', '.', '.', '2', '8', '.'],
+        ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
+        ['.', '.', '.', '.', '8', '.', '.', '7', '9'],
+      ]).toString(),
+    fn: isValidSudoku,
+  },
+  {
+    title: 'Spiral Matrix',
+    desc: `Given an m x n matrix, return all elements of the matrix in spiral order.`,
+    difficulty: difficulty.medium,
+    minutesTaken: 76,
+    input: `[[1,2,3],[4,5,6],[7,8,9]]`,
+    timeComplexity: 'O(m*n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      'm == matrix.length',
+      'n == matrix[i].length',
+      '1 <= m, n <= 10',
+      '-100 <= matrix[i][j] <= 100',
+    ],
+    fnResult: () =>
+      spiralOrder([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+      ]).toString(),
+    fn: spiralOrder,
+  },
+  {
+    title: 'Rotate Image',
+    desc: `Given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise). 
+    You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. 
+    DO NOT allocate another 2D matrix and do the rotation.`,
+    difficulty: difficulty.medium,
+    minutesTaken: 70,
+    input: `[[1,2,3],[4,5,6],[7,8,9]]`,
+    timeComplexity: 'O(n^2)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      'n == matrix.length == matrix[i].length',
+      '1 <= n <= 20',
+      '-1000 <= matrix[i][j] <= 1000',
+    ],
+    fnResult: () =>
+      rotateImage([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+      ]).toString(),
+    fn: rotateImage,
+  },
+  {
+    title: 'Set Matrix Zeroes',
+    desc: `Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.`,
+    difficulty: difficulty.medium,
+    minutesTaken: 8,
+    input: `[[1,1,1],[1,0,1],[1,1,1]]`,
+    timeComplexity: 'O(n * m)',
+    spaceComplexity: 'O(n + m)',
+    constraints: [
+      'm == matrix.length',
+      'n == matrix[0].length',
+      '1 <= m, n <= 200',
+      '-2^31 <= matrix[i][j] <= 2^31 - 1',
+    ],
+    fnResult: () =>
+      setZeroes([
+        [1, 1, 1],
+        [1, 0, 1],
+        [1, 1, 1],
+      ]).toString(),
+    fn: setZeroes,
+  },
+  {
+    title: 'Game Of Life',
+    desc: `The board is made up of an m x n grid of cells, where each cell has an initial state: live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
+          Any live cell with fewer than two live neighbors dies as if caused by under-population.
+          Any live cell with two or three live neighbors lives on to the next generation.
+          Any live cell with more than three live neighbors dies, as if by over-population.
+          Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+          The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously. Given the current state of the m x n grid board, return the next state.`,
+    difficulty: difficulty.medium,
+    minutesTaken: 45,
+    input: [
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 1, 1],
+      [0, 0, 0],
+    ],
+    timeComplexity: 'O(n ∗ m)',
+    spaceComplexity: 'O(n ∗ m)',
+    constraints: [
+      'm == board.length',
+      'n == board[i].length',
+      '1 <= m, n <= 25',
+      'board[i][j] is 0 or 1',
+    ],
+    fnResult: () =>
+      gameOfLife([
+        [0, 1, 0],
+        [0, 0, 1],
+        [1, 1, 1],
+        [0, 0, 0],
+      ]).toString(),
+    fn: gameOfLife,
+  },
+  {
+    title: 'Ransom Note',
+    desc: `Given two strings ransomNote and magazine, 
+    return true if ransomNote can be constructed by using the letters from magazine and false otherwise. 
+    Each letter in magazine can only be used once in ransomNote.`,
+    difficulty: difficulty.easy,
+    minutesTaken: 27,
+    input: 'ransomNote = "aa", magazine = "aab"',
+    timeComplexity: 'O(n + m)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= ransomNote.length, magazine.length <= 10^5',
+      'ransomNote and magazine consist of lowercase English letters',
+    ],
+    fnResult: () => canConstruct('aa', 'aab').toString(),
+    fn: canConstruct,
+  },
 ];
 
 const LeetCode = () => {
@@ -586,6 +955,7 @@ const LeetCode = () => {
                 difficulty={leet?.difficulty}
                 algorithmLink={leet?.algoLink}
                 constraints={leet?.constraints}
+                minutesTaken={leet?.minutesTaken}
               />
             </BasicCard>
           );
