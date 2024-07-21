@@ -2,68 +2,76 @@ import { Header } from '@/components/Header';
 import { Search } from '@/components/Search';
 import BasicCard from '@/components/BasicCard';
 import LeetCardContent from '@/components/leetCode/LeetCardContent';
-import { canFormString } from '@/lts/canFormString';
-import { charOccurCount } from '@/lts/charOccurCount';
-import { countWords } from '@/lts/countWords';
-import { factorial } from '@/lts/factorial';
-import { fibonacci } from '@/lts/fibonacci';
-import { firstDuplicate } from '@/lts/firstDuplicate';
-import { fizzBuzz } from '@/lts/fizzBuzz';
-import { isPalindrome } from '@/lts/isPalindrome';
-import { isPowerOfThree } from '@/lts/isPowerOfThree';
-import { middle } from '@/lts/middleOfThree';
-import { removeDuplicates } from '@/lts/removeDuplicates';
-import { removeExtraSpaces } from '@/lts/removeExtraSpaces';
-import { reverseSentence } from '@/lts/reverseSentence';
-import { reverseString } from '@/lts/reverseString';
-import { splitStringAtIndex } from '@/lts/splitStringAtIndex';
-import { sumArrByIndex } from '@/lts/sumArrByIndex';
-import { sumEvenOddIndexes } from '@/lts/sumEvenOddIndexes';
-import { sumOfStringDigits } from '@/lts/sumOfStringDigits';
+import {
+  canCompleteCircuit,
+  canConstruct,
+  canFormString,
+  canJump,
+  canJump2,
+  charOccurCount,
+  countWords,
+  factorial,
+  fibonacci,
+  findMedianSortedArrays,
+  firstDuplicate,
+  fizzBuzz,
+  fullJustify,
+  gameOfLife,
+  groupAnagrams,
+  hIndexShortHand,
+  intToRoman,
+  isAnagram_simple,
+  isHappyNumber,
+  isIsomorphic_easierSolution,
+  isPalindrome,
+  isPowerOfThree,
+  isSubsequence,
+  isValidPalindrome,
+  isValidSudoku,
+  lengthOfLastWord,
+  longestCommonPrefix,
+  longestPalindrome,
+  longestSubstrNoRepeatChars,
+  majorityElement,
+  maxArea,
+  maxStockProfit,
+  maxStockProfit2,
+  merge,
+  middle,
+  minCandy,
+  minSubArrayLen,
+  minWindow,
+  productExceptSelfWithoutDivision,
+  removeDupesInSortedNumericArrayFast,
+  removeDuplicates,
+  removeElement,
+  removeExtraSpaces,
+  removeThirdDuplicatesInSortedNumericArray,
+  reverseInteger,
+  reverseSentence,
+  reverseString,
+  reverseWords,
+  romanToInt,
+  rotateArray,
+  rotateImage,
+  setZeroes,
+  spiralOrder,
+  splitStringAtIndex,
+  strStr,
+  substrWithConcatOfAllWords,
+  sumArrByIndex,
+  sumEvenOddIndexes,
+  sumOfStringDigits,
+  threeSum,
+  trapWater,
+  twoSum,
+  twoSum2,
+  wordPattern,
+  zigzagconvert,
+} from '@/lts';
 import { fuzzySearch } from '@/utils/searchUtils';
 import { useState } from 'react';
-import { longestSubstrNoRepeatChars } from '@/lts/longestSubstrNoRepeatChars';
 import { difficulty } from './leetConstants';
-import { findMedianSortedArrays } from '@/lts/medianOfTwoSortedArrays';
-import { longestPalindrome } from '@/lts/longestPalindromicSubstring';
-import { zigzagconvert } from '@/lts/zigzagConversion';
-import { reverseInteger } from '@/lts/reverseInteger';
-import { merge } from '@/lts/mergeSortedArray';
-import { removeElement } from '@/lts/removeElementInPlaceArray';
-import { removeDupesInSortedNumericArrayFast } from '@/lts/removeDuplicatesInSortedNumericArray';
-import { removeThirdDuplicatesInSortedNumericArray } from '@/lts/removeThirdDuplicatesInSortedNumericArray';
-import { majorityElement } from '@/lts/majorityElement';
-import { rotateArray } from '@/lts/rotateArray';
-import { maxStockProfit } from '@/lts/maxStockProfit';
-import { maxStockProfit2 } from '@/lts/maxStockProfit2';
-import { canJump } from '@/lts/jumpGame';
-import { canJump2 } from '@/lts/jumpGame2';
-import { hIndexShortHand } from '@/lts/hIndex';
-import { productExceptSelfWithoutDivision } from '@/lts/productOfArrayExceptSelf';
-import { canCompleteCircuit } from '@/lts/canCompleteCircuit';
-import { minCandy } from '@/lts/minCandy';
-import { trapWater } from '@/lts/trappingRainWater';
-import { romanToInt } from '@/lts/romanToInteger';
-import { intToRoman } from '@/lts/integerToRoman';
-import { lengthOfLastWord } from '@/lts/lengthOfLastWord';
-import { longestCommonPrefix } from '@/lts/longestCommonPrefix';
-import { reverseWords } from '@/lts/reverseWordsInString';
-import { strStr } from '@/lts/findIndexOfFirstWordsOccurence';
-import { fullJustify } from '@/lts/justification';
-import { isValidPalindrome } from '@/lts/validPalindrome';
-import { isSubsequence } from '@/lts/isSubsequence';
-import { twoSum2 } from '@/lts/twoSum2';
-import { maxArea } from '@/lts/containerWithMostWater';
-import { threeSum } from '@/lts/3Sum';
-import { minSubArrayLen } from '@/lts/minSizeSubarraySum';
-import { substrWithConcatOfAllWords } from '@/lts/substrWithConcatOfAllWords';
-import { minWindow } from '@/lts/minWindowSubstr';
-import { isValidSudoku } from '@/lts/validSudoku';
-import { spiralOrder } from '@/lts/spiralMatrix';
-import { rotateImage } from '@/lts/rotateImage';
-import { setZeroes } from '@/lts/setMatrixZeroes';
-import { gameOfLife } from '@/lts/gameOfLife';
-import { canConstruct } from '@/lts/randsomNote';
 
 const leets = [
   {
@@ -915,6 +923,119 @@ const leets = [
     ],
     fnResult: () => canConstruct('aa', 'aab').toString(),
     fn: canConstruct,
+  },
+  {
+    title: 'Isomorphic Strings',
+    desc: `Given two strings s and t, determine if they are isomorphic. 
+    Two strings s and t are isomorphic if the characters in s can be replaced to get t. 
+    All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.`,
+    difficulty: difficulty.easy,
+    minutesTaken: 40,
+    input: 's = "foo", t = "bar"',
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= s.length <= 5 * 10^4',
+      't.length == s.length',
+      's and t consist of any valid ascii character',
+    ],
+    fnResult: () => isIsomorphic_easierSolution('foo', 'bar').toString(),
+    fn: isIsomorphic_easierSolution,
+  },
+  {
+    title: 'Word Pattern',
+    desc: `Given a pattern and a string s, find if s follows the same pattern. 
+    Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.`,
+    difficulty: difficulty.easy,
+    minutesTaken: 24,
+    input: 'pattern = "abba", s = "dog cat cat fish"',
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= pattern.length <= 300',
+      'pattern contains only lower-case English letters',
+      '1 <= s.length <= 3000',
+      's contains only lowercase English letters and spaces " "',
+      's does not contain any leading or trailing spaces',
+      'All the words in s are separated by a single space',
+    ],
+    fnResult: () => wordPattern('abba', 'dog cat cat fish').toString(),
+    fn: wordPattern,
+  },
+  {
+    title: 'Valid Anagram',
+    desc: `Given two strings s and t, return true if t is an anagram of s, and false otherwise. 
+    An Anagram is a word or phrase formed by rearranging the letters of a different 
+    word or phrase, typically using all the original letters exactly once.`,
+    difficulty: difficulty.easy,
+    minutesTaken: 5,
+    input: 's = "anagram", t = "nagaram"',
+    timeComplexity: 'O(n log n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= s.length, t.length <= 5 * 10^4',
+      's and t consist of lowercase English letters',
+    ],
+    fnResult: () => isAnagram_simple('anagram', 'nagaram').toString(),
+    fn: isAnagram_simple,
+  },
+  {
+    title: 'Group Anagram',
+    desc: `Given an array of strings strs, group the anagrams together. 
+    You can return the answer in any order. An Anagram is a word or phrase 
+    formed by rearranging the letters of a different word or phrase, 
+    typically using all the original letters exactly once.`,
+    difficulty: difficulty.medium,
+    minutesTaken: 11,
+    input: ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'],
+    timeComplexity: 'O(n ∗ m * log m)',
+    spaceComplexity: 'O(n * m)',
+    constraints: [
+      '1 <= strs.length <= 10^4',
+      '0 <= strs[i].length <= 100',
+      'strs[i] consists of lowercase English letters',
+    ],
+    fnResult: () =>
+      groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']).toString(),
+    fn: groupAnagrams,
+  },
+  {
+    title: 'Two Sum',
+    desc: `Given an array of integers nums and an integer target, return 
+    indices of the two numbers such that they add up to target. 
+    You may assume that each input would have exactly one solution, 
+    and you may not use the same element twice. 
+    You can return the answer in any order.`,
+    difficulty: difficulty.easy,
+    minutesTaken: 49,
+    input: 'nums = [2,7,11,15], target = 9',
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '2 <= nums.length <= 10^4',
+      '-10^9 <= nums[i] <= 10^9',
+      '-10^9 <= target <= 10^9',
+      'Only one valid answer exists',
+    ],
+    fnResult: () => twoSum([2, 7, 11, 15], 9).toString(),
+    fn: twoSum,
+  },
+  {
+    title: 'Happy Number',
+    desc: `Write an algorithm to determine if a number n is happy. 
+    A happy number is a number defined by the following process: 
+    Starting with any positive integer, replace the number by the sum of the squares of its digits. 
+    Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. 
+    Those numbers for which this process ends in 1 are happy. 
+    Return true if n is a happy number, and false if not.`,
+    difficulty: difficulty.easy,
+    minutesTaken: 10,
+    input: 19,
+    timeComplexity: 'O(log n)',
+    spaceComplexity: 'O(log n)',
+    constraints: ['1 <= n <= 2^31 - 1'],
+    fnResult: () => isHappyNumber(19).toString(),
+    fn: isHappyNumber,
   },
 ];
 
