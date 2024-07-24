@@ -9,6 +9,7 @@ import {
   canJump,
   canJump2,
   charOccurCount,
+  containsNearbyDuplicate,
   countWords,
   factorial,
   fibonacci,
@@ -30,6 +31,7 @@ import {
   isValidSudoku,
   lengthOfLastWord,
   longestCommonPrefix,
+  longestConsecutive,
   longestPalindrome,
   longestSubstrNoRepeatChars,
   majorityElement,
@@ -37,6 +39,7 @@ import {
   maxStockProfit,
   maxStockProfit2,
   merge,
+  mergeIntervals,
   middle,
   minCandy,
   minSubArrayLen,
@@ -61,6 +64,7 @@ import {
   substrWithConcatOfAllWords,
   sumArrByIndex,
   sumEvenOddIndexes,
+  summaryRanges,
   sumOfStringDigits,
   threeSum,
   trapWater,
@@ -1036,6 +1040,87 @@ const leets = [
     constraints: ['1 <= n <= 2^31 - 1'],
     fnResult: () => isHappyNumber(19).toString(),
     fn: isHappyNumber,
+  },
+  {
+    title: 'Contains Duplicate II',
+    desc: `Given an integer array nums and an integer k, return true if 
+    there are two distinct indices i and j in the array such that 
+    nums[i] == nums[j] and abs(i - j) <= k.`,
+    difficulty: difficulty.easy,
+    minutesTaken: Infinity,
+    input: 'nums = [1,2,3,1], k = 3',
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      '1 <= nums.length <= 10^5',
+      '-10^9 <= nums[i] <= 10^9',
+      '0 <= k <= 10^5',
+    ],
+    fnResult: () => containsNearbyDuplicate([1, 2, 3, 1], 3).toString(),
+    fn: containsNearbyDuplicate,
+  },
+  {
+    title: 'Longest Consecutive Sequence',
+    desc: `Given an unsorted array of integers nums, 
+    return the length of the longest consecutive elements sequence. 
+    You must write an algorithm that runs in O(n) time.`,
+    difficulty: difficulty.medium,
+    minutesTaken: Infinity,
+    input: [100, 4, 200, 1, 3, 2],
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: ['0 <= nums.length <= 10^5', '-10^9 <= nums[i] <= 10^9'],
+    fnResult: () => longestConsecutive([100, 4, 200, 1, 3, 2]).toString(),
+    fn: longestConsecutive,
+  },
+  {
+    title: 'Summary Ranges',
+    desc: `Given a sorted unique integer array nums. 
+    A range [a,b] is the set of all integers from a to b (inclusive). 
+    Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums. 
+    Each range [a,b] in the list should be output as: 
+    ~ "a->b" if a != b 
+    ~ "a" if a == b`,
+    difficulty: difficulty.easy,
+    minutesTaken: 14,
+    input: [0, 1, 2, 4, 5, 7],
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '0 <= nums.length <= 20',
+      '-2^31 <= nums[i] <= 2^31 - 1',
+      'All the values of nums are unique',
+      'nums is sorted in ascending order',
+    ],
+    fnResult: () => summaryRanges([0, 1, 2, 4, 5, 7]).toString(),
+    fn: summaryRanges,
+  },
+  {
+    title: 'Merge Intervals',
+    desc: `Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.`,
+    difficulty: difficulty.medium,
+    minutesTaken: Infinity,
+    input: [
+      [1, 3],
+      [2, 6],
+      [8, 10],
+      [15, 18],
+    ],
+    timeComplexity: 'O(n log n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= intervals.length <= 10^4',
+      'intervals[i].length == 2',
+      '0 <= starti <= endi <= 10^4',
+    ],
+    fnResult: () =>
+      mergeIntervals([
+        [1, 3],
+        [2, 6],
+        [8, 10],
+        [15, 18],
+      ]).toString(),
+    fn: mergeIntervals,
   },
 ];
 

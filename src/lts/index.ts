@@ -63,3 +63,7 @@ export * from './validPalindrome';
 export * from './validSudoku';
 export * from './wordPattern';
 export * from './zigzagConversion';
+export * from './containsDuplicate2';
+export * from './longestConsecutiveSequence';
+export * from './summaryRanges';
+export * from './mergeIntervals';
