@@ -67,3 +67,8 @@ export * from './containsDuplicate2';
 export * from './longestConsecutiveSequence';
 export * from './summaryRanges';
 export * from './mergeIntervals';
+export * from './insertInterval';
+export * from './minNumberOfArrowShots';
+export * from './validParentheses';
+export * from './simplifyPath';
+export * from './minStack';
