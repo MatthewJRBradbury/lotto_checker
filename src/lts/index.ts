@@ -72,3 +72,4 @@ export * from './minNumberOfArrowShots';
 export * from './validParentheses';
 export * from './simplifyPath';
 export * from './minStack';
+export * from './evaluateReversePolishNotation';

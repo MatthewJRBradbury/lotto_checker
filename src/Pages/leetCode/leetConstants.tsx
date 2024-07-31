@@ -6,7 +6,24 @@ export enum difficulty {
   hard = 'Hard',
 }
 
-export const leets = [
+interface LeetCodeProblem<T = any> {
+  title?: string;
+  desc?: React.ReactNode;
+  difficulty?: difficulty;
+  minutesTaken?: number;
+  input?: any;
+  timeComplexity?: string;
+  spaceComplexity?: string;
+  constraints?: string[];
+  fnResult?: () => T;
+  fn?: string | ((...args: any[]) => any);
+  algoLink?: {
+    link: string;
+    linkTitle: string;
+  };
+}
+
+export const leets: LeetCodeProblem[] = [
   {
     title: 'Middle of Three Problem',
     desc: (
@@ -1219,6 +1236,58 @@ export const leets = [
       'At most 3 * 10^4 calls will be made to push, pop, top, and getMin',
     ],
     fnResult: () => leetFuncs.minStackCall(),
-    fn: leetFuncs.minStackCall,
+    fn: leetFuncs.minStackStrOfFunc,
+  },
+  {
+    title: 'Evaluate Reverse Polish Notation',
+    desc: `Given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation. 
+    Evaluate the expression. Return an integer that represents the value of the expression. 
+    Note that: 
+    The valid operators are '+', '-', '*', and '/'. 
+    Each operand may be an integer or another expression. 
+    The division between two integers always truncates toward zero. 
+    There will not be any division by zero. 
+    The input represents a valid arithmetic expression in a reverse polish notation. 
+    The answer and all the intermediate calculations can be represented in a 32-bit integer.`,
+    difficulty: difficulty.medium,
+    minutesTaken: Infinity,
+    input: [
+      '10',
+      '6',
+      '9',
+      '3',
+      '+',
+      '-11',
+      '*',
+      '/',
+      '*',
+      '17',
+      '+',
+      '5',
+      '+',
+    ],
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= tokens.length <= 10^4',
+      'tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200]',
+    ],
+    fnResult: () =>
+      leetFuncs.evalRPN([
+        '10',
+        '6',
+        '9',
+        '3',
+        '+',
+        '-11',
+        '*',
+        '/',
+        '*',
+        '17',
+        '+',
+        '5',
+        '+',
+      ]),
+    fn: leetFuncs.evalRPN,
   },
 ];
