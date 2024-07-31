@@ -6,7 +6,7 @@ test('has ticket title', async ({ page }) => {
   await page.getByRole('link', { name: 'Tickets' }).click();
   await expect(page).toHaveTitle(/Tickets - Lotto Checker/);
 });
-
+// TODO: update accessibility checks to test both light and dark mode!!!
 test('tickets page should not have automatically detectable accessibility violations', async ({
   page,
 }) => {

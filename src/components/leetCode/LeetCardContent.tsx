@@ -10,6 +10,7 @@ const LeetCardContent = ({
   difficulty,
   algorithmLink,
   constraints,
+  minutesTaken,
 }: LeetCardContentProps) => {
   /** TODO: - add expected output and actual output,
    * - dropdown with search for multiple solutions
@@ -57,6 +58,11 @@ const LeetCardContent = ({
       {spaceComplexity && (
         <h3 className="pb-1">
           <b>Space Complexity:</b> {spaceComplexity}
+        </h3>
+      )}
+      {minutesTaken && (
+        <h3 className="pb-1">
+          <b>Completed in:</b> {minutesTaken} minutes
         </h3>
       )}
       <h3>
