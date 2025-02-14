@@ -72,3 +72,8 @@ export * from './minNumberOfArrowShots';
 export * from './validParentheses';
 export * from './simplifyPath';
 export * from './minStack';
+export * from './evaluateReversePolishNotation';
+export * from './basicCalculator';
+export * from './linkedListCycle';
+export * from './addTwoNumbers';
+export * from './mergeTwoSortedLists';

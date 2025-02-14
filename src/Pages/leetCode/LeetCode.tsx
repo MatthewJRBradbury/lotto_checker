@@ -45,7 +45,11 @@ const LeetCode = () => {
                 <LeetCardContent
                   input={leet.input}
                   func={leet.fnResult}
-                  funcAsString={`const ${leet.fn.name} = ${leet.fn.toString()}`}
+                  funcAsString={
+                    typeof leet.fn === 'function'
+                      ? `const ${leet.fn?.name} = ${leet.fn.toString()}`
+                      : `${leet.fn}`
+                  }
                   timeComplexity={leet?.timeComplexity}
                   spaceComplexity={leet?.spaceComplexity}
                   difficulty={leet?.difficulty}

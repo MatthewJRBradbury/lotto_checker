@@ -1,4 +1,5 @@
 import * as leetFuncs from '@/lts';
+import { List } from 'lucide-react';
 
 export enum difficulty {
   easy = 'Easy',
@@ -6,7 +7,24 @@ export enum difficulty {
   hard = 'Hard',
 }
 
-export const leets = [
+interface LeetCodeProblem<T = any> {
+  title?: string;
+  desc?: React.ReactNode;
+  difficulty?: difficulty;
+  minutesTaken?: number;
+  input?: any;
+  timeComplexity?: string;
+  spaceComplexity?: string;
+  constraints?: string[];
+  fnResult?: () => T;
+  fn?: string | ((...args: any[]) => any);
+  algoLink?: {
+    link: string;
+    linkTitle: string;
+  };
+}
+
+export const leets: LeetCodeProblem[] = [
   {
     title: 'Middle of Three Problem',
     desc: (
@@ -1219,6 +1237,152 @@ export const leets = [
       'At most 3 * 10^4 calls will be made to push, pop, top, and getMin',
     ],
     fnResult: () => leetFuncs.minStackCall(),
-    fn: leetFuncs.minStackCall,
+    fn: leetFuncs.minStackStrOfFunc,
+  },
+  {
+    title: 'Evaluate Reverse Polish Notation',
+    desc: `Given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation. 
+    Evaluate the expression. Return an integer that represents the value of the expression. 
+    Note that: 
+    The valid operators are '+', '-', '*', and '/'. 
+    Each operand may be an integer or another expression. 
+    The division between two integers always truncates toward zero. 
+    There will not be any division by zero. 
+    The input represents a valid arithmetic expression in a reverse polish notation. 
+    The answer and all the intermediate calculations can be represented in a 32-bit integer.`,
+    difficulty: difficulty.medium,
+    minutesTaken: Infinity,
+    input: [
+      '10',
+      '6',
+      '9',
+      '3',
+      '+',
+      '-11',
+      '*',
+      '/',
+      '*',
+      '17',
+      '+',
+      '5',
+      '+',
+    ],
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    constraints: [
+      '1 <= tokens.length <= 10^4',
+      'tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200]',
+    ],
+    fnResult: () =>
+      leetFuncs.evalRPN([
+        '10',
+        '6',
+        '9',
+        '3',
+        '+',
+        '-11',
+        '*',
+        '/',
+        '*',
+        '17',
+        '+',
+        '5',
+        '+',
+      ]),
+    fn: leetFuncs.evalRPN,
+  },
+  {
+    title: 'Basic Calculator',
+    desc: `Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation. 
+    Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().`,
+    difficulty: difficulty.hard,
+    minutesTaken: Infinity,
+    input: '(1+(4+5+2)-3)+(6+8)',
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      '1 <= s.length <= 3 * 10^5',
+      's consists of digits, "+", "-", "(", ")", and " "',
+      's represents a valid expression',
+      '"+" is not used as a unary operation (i.e., "+1" and "+(2 + 3)" is invalid)',
+      '"-" could be used as a unary operation (i.e., "-1" and "-(2 + 3)" is valid)',
+      'There will be no two consecutive operators in the input',
+      'Every number and running calculation will fit in a signed 32-bit integer',
+    ],
+    fnResult: () => leetFuncs.calculate('(1+(4+5+2)-3)+(6+8)'),
+    fn: leetFuncs.calculate,
+  },
+  {
+    title: 'Linked List Cycle',
+    desc: `Given head, the head of a linked list, determine if the linked list has a cycle in it. 
+    There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter. 
+    Return true if there is a cycle in the linked list. Otherwise, return false. (Solve with Fast and slow pointers)`,
+    difficulty: difficulty.easy,
+    minutesTaken: Infinity,
+    input: 'head = [3,2,0,-4]',
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    constraints: [
+      'The number of the nodes in the list is in the range [0, 10^4]',
+      '-10^5 <= Node.val <= 10^5',
+      'pos is -1 or a valid index in the linked-list',
+    ],
+    fnResult: () => leetFuncs.hasCycle(),
+    fn: leetFuncs.hasCycle,
+  },
+  {
+    title: 'Add Two Numbers',
+    desc: `Given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list. 
+    You may assume the two numbers do not contain any leading zero, except the number 0 itself.`,
+    difficulty: difficulty.medium,
+    minutesTaken: Infinity,
+    input: 'l1 = [2,4,3], l2 = [5,6,4]',
+    timeComplexity: 'O(max(m, n))',
+    spaceComplexity: 'O(max(m, n))',
+    constraints: [
+      'The number of nodes in each linked list is in the range [1, 100]',
+      '0 <= Node.val <= 9',
+      'It is guaranteed that the list represents a number that does not have leading zeros',
+    ],
+    fnResult: () =>
+      leetFuncs.addTwoNumbers(
+        new leetFuncs.ListNode(
+          2,
+          new leetFuncs.ListNode(4, new leetFuncs.ListNode(3))
+        ),
+        new leetFuncs.ListNode(
+          5,
+          new leetFuncs.ListNode(6, new leetFuncs.ListNode(4))
+        )
+      ),
+    fn: leetFuncs.addTwoNumbers,
+  },
+  {
+    title: 'Merge Two Sorted Lists',
+    desc: `Given the heads of two sorted linked lists list1 and list2. 
+    Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists. 
+    Return the head of the merged linked list.`,
+    difficulty: difficulty.easy,
+    minutesTaken: Infinity,
+    input: 'list1 = [1,2,4], list2 = [1,3,4]',
+    timeComplexity: 'O(n + m)',
+    spaceComplexity: 'O(n + m)',
+    constraints: [
+      'The number of nodes in both lists is in the range [0, 50]',
+      '-100 <= Node.val <= 100',
+      'Both list1 and list2 are sorted in non-decreasing order',
+    ],
+    fnResult: () =>
+      leetFuncs.callMergeTwoLists(
+        new leetFuncs.ListNode(
+          1,
+          new leetFuncs.ListNode(2, new leetFuncs.ListNode(4))
+        ),
+        new leetFuncs.ListNode(
+          1,
+          new leetFuncs.ListNode(3, new leetFuncs.ListNode(4))
+        )
+      ),
+    fn: leetFuncs.mergeTwoLists,
   },
 ];
