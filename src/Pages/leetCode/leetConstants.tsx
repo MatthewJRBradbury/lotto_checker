@@ -1,5 +1,5 @@
 import * as leetFuncs from '@/lts';
-import { List } from 'lucide-react';
+// import { List } from 'lucide-react';
 
 export enum difficulty {
   easy = 'Easy',
